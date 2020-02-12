@@ -194,7 +194,8 @@ def crearProducto():
 	os.remove(os.getcwd()+'/Python3_SGE/datos/listaInventario.csv')
 	os.rename(os.getcwd()+'/Python3_SGE/datos/new.csv', os.getcwd()+'/Python3_SGE/datos/listaInventario.csv')
 
-	return render_template('inventario.html')
+	#return render_template('inventario.html')
+	return json.dumps(1);
 
 #Cargar datos de un produto seleccionado
 @app.route('/verProducto', methods=['POST'])

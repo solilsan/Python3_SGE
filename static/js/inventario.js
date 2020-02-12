@@ -74,7 +74,11 @@ $('#crearProducto').click(function() {
             data: $('#crearProductoForm').serialize(),
             type: 'POST',
             async:false,
-            success: function(response) {},
+            success: function(response) {
+
+              cargarDatos()
+
+            },
             error: function(error) {
 
                 console.log(error);
@@ -82,9 +86,13 @@ $('#crearProducto').click(function() {
             }
         });
 
+        return false
+
       }
       else {
+
         return false
+
       }
 
     });
