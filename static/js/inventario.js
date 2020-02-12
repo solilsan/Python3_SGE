@@ -12,6 +12,8 @@ $(document).ajaxStop(function() {
 
 });
 
+var table
+
 
 function cargarDatos(){
 
@@ -23,7 +25,7 @@ function cargarDatos(){
 
         var dataSet = JSON.parse(response)['datos']
 
-        var table = $('#dt-select').DataTable({
+        table = $('#dt-select').DataTable({
           data: dataSet,
             columns: [
               {title: "id", visible: false},
@@ -75,7 +77,8 @@ $('#crearProducto').click(function() {
             type: 'POST',
             async:false,
             success: function(response) {
-
+              
+              table.destroy();
               cargarDatos()
 
             },
