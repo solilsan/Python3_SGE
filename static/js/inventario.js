@@ -74,11 +74,7 @@ $('#crearProducto').click(function() {
             data: $('#crearProductoForm').serialize(),
             type: 'POST',
             async:false,
-            success: function(response) {
-
-              cargarDatos()
-
-            },
+            success: function(response) {},
             error: function(error) {
 
                 console.log(error);
