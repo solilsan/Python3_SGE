@@ -153,7 +153,7 @@ def borrarInventario():
 	os.remove(os.getcwd()+'/Python3_SGE/datos/listaInventario.csv') #Removemos el anterior archivo
 	os.rename(os.getcwd()+'/Python3_SGE/datos/new.csv', os.getcwd()+'/Python3_SGE/datos/listaInventario.csv') #Cambiamos el nombre del nuevo archivo al nombre del anterior
 
-	return render_template('inventario.html')
+	return json.dumps(1);
 
 #Crear un producto
 @app.route('/crearProducto', methods=['POST'])
@@ -194,7 +194,6 @@ def crearProducto():
 	os.remove(os.getcwd()+'/Python3_SGE/datos/listaInventario.csv')
 	os.rename(os.getcwd()+'/Python3_SGE/datos/new.csv', os.getcwd()+'/Python3_SGE/datos/listaInventario.csv')
 
-	#return render_template('inventario.html')
 	return json.dumps(1);
 
 #Cargar datos de un produto seleccionado
@@ -249,7 +248,7 @@ def actualizarProducto():
 	os.remove(os.getcwd()+'/Python3_SGE/datos/listaInventario.csv')
 	os.rename(os.getcwd()+'/Python3_SGE/datos/new.csv', os.getcwd()+'/Python3_SGE/datos/listaInventario.csv')
 
-	return render_template('inventario.html')
+	return json.dumps(1);
 
 
 

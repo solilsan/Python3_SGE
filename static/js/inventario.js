@@ -117,7 +117,7 @@ function validarA(){
 
     if (validarA()){
 
-        $('#modalVerProducto').hide();
+        $('#modalVerProducto').modal('hide');
 
         $.ajax({
             url: '/actualizarProducto',
@@ -126,7 +126,8 @@ function validarA(){
             async:false,
             success: function(response) {
 
-                location.reload();
+              table.destroy();
+              cargarDatos()
 
             },
             error: function(error) {
@@ -135,6 +136,8 @@ function validarA(){
 
             }
         });
+
+        return false
 
       }
       else {
@@ -152,7 +155,8 @@ function borrar(data){
             async:false,
             success: function(response) {
 
-              location.reload();
+              table.destroy();
+              cargarDatos()
 
             },
             error: function(error) {
@@ -161,6 +165,8 @@ function borrar(data){
 
             }
         });
+
+    return false
 
 }
 
