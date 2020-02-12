@@ -5,21 +5,27 @@
 td {
   width: 20%;
   color: white;
+}
 
 th {
   background-color: #b89df1;
+}
 
 div#dt-select_info {
   color: white;
+}
 
 div#dt-select_filter {
   color: white;
+}
 
 input {
   color: white !important;
+}
 
 .form-control.form-control-sm {
     color: black !important;
+  }
 
 .navbar.navbar-expand-lg.navbar-dark.mt-2 {
   background-color: 
