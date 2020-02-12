@@ -31,3 +31,11 @@ input {
   background-color: 
   black;
 }
+
+.dropdown-item {
+  color: white !important;
+}
+
+.dropdown-menu.show.bg-black {
+  background-color: black;
+}
