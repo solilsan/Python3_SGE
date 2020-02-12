@@ -70,6 +70,7 @@ $('#crearProducto').click(function() {
   if (validarC()){
 
       $('#modalCrearProducto').hide();
+      $('.modal-backdrop').hide();
 
         $.ajax({
             url: '/crearProducto',
@@ -77,7 +78,7 @@ $('#crearProducto').click(function() {
             type: 'POST',
             async:false,
             success: function(response) {
-              
+
               table.destroy();
               cargarDatos()
 
