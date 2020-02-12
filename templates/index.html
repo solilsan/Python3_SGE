@@ -1,0 +1,58 @@
+<!--https://mdbootstrap.com/-->
+<html>
+<head>
+    
+	<link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mdb.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/all.css') }}">
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+    <style type="text/css">
+        
+        .container {
+            width: 50%
+        }
+
+    </style>
+    
+</head>
+<body>
+
+	<div class="container">
+
+        <div class="row">
+
+            <div class="col-12">
+                
+                <form id="login" class="text-center border border-light p-5 mt-5" method="post" role="form">
+            
+                    <p class="h4 mb-4">Iniciar sesión</p>
+            
+                    <input type="text" name="username" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="Usuario" autocomplete="username" required>
+            
+                    <input type="password" name="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Contraseña" autocomplete="current-password" required>
+            
+                    <button id="botonLogin" class="btn btn-outline-info btn-block my-4" type="button">Iniciar</button>
+            
+                </form>
+
+            </div>
+            
+        </div>
+
+        <div class="row">
+            
+            <div id="lCorrecto" class="col-12 alert alert-danger text-center d-none" role="alert">
+                    Usuario o contraseña incorrectos.
+            </div>
+
+        </div>     
+      
+     </div>
+
+</body>
+</html>

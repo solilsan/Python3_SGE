@@ -1,0 +1,219 @@
+<html>
+<head>
+
+	<link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/addons/datatables.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/addons/datatables-select.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/mdb.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/all.css') }}">
+  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/addons/datatables.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/addons/datatables-select.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+
+	<style type="text/css">
+
+    #div_carga{
+      display:none;
+    }
+
+    td {
+      width: 20%;
+      color: white;
+    }
+
+    th {
+      background-color: #b89df1;
+    }
+
+    div#dt-select_info {
+      color: white;
+    }
+
+    div#dt-select_filter {
+      color: white;
+    }
+
+    input {
+      color: white !important;
+    }
+
+    .form-control.form-control-sm {
+        color: black !important;
+    }
+
+	</style>
+
+</head>
+<body class="elegant-color-dark">
+
+	<div class="container">
+
+        <nav class="navbar navbar-expand-lg navbar-dark mt-2">
+
+            <a class="navbar-brand" href="/inicio.html">SGE</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"  aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+                <li class="nav-item">
+
+                  <a id="bIventario" class="nav-link active" href="/inventario.html"><u>Inventario</u></a>
+
+                </li>
+
+                <li class="nav-item">
+
+                  <a class="nav-link" href="#">Ventas</a>
+
+                </li>
+
+                <li class="nav-item">
+
+                  <a class="nav-link" href="/compras.html">Compras</a>
+
+                </li>
+
+              </ul>
+
+              <form class="form-inline my-2 my-lg-0" role="form">
+
+                <button id="logout" class="btn btn btn-outline-primary my-2 my-sm-0" type="button">Salir</button>
+
+              </form>
+
+            </div>
+
+        </nav>
+
+        <div id="divInventario" class="mt-5">
+
+          <div class="text-center">
+
+  				  <button class="btn btn btn-outline-primary my-2 my-sm-0" type="button" data-toggle="modal" data-target="#modalCrearProducto">Crear</button>
+
+			    </div>
+
+        	<table id="dt-select" class="table table-striped table-bordered text-center" cellspacing="0" width="100%">
+  				<div id="div_carga" class="text-center">
+            <img id="cargador" src="{{ url_for('static', filename='img/ajax-loader.gif') }}"/>
+          </div>
+			    </table>
+
+		    </div>
+
+  </div>
+
+        <div class="modal fade" id="modalCrearProducto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content unique-color-dark text-white">
+              <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Crear Producto</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <form id="crearProductoForm" class="text-center border border-light" role="form">
+
+              <div class="modal-body mx-3">
+
+                <div class="md-form mb-5">
+                  <input type="text" id="cpNombre" name="nombreP" class="form-control validate" placeholder="Nombre">
+                </div>
+
+                <div class="md-form mb-4">
+                  <input type="text" id="cpTipo" name="tipoP" class="form-control validate" placeholder="Tipo">
+                </div>
+
+                <div class="md-form mb-4">
+                  <input type="number" id="cpCantidad" name="contidadP" class="form-control validate" placeholder="Cantidad">
+                </div>
+
+                <div class="md-form mb-4">
+                  <input type="number" step="0.01" id="cpPrecioCompra" name="precioCompraP" class="form-control validate" placeholder="Precio Compra">
+                </div>
+
+                <div class="md-form mb-4">
+                  <input type="number" step="0.01" id="cpPrecioVenta" name="precioVentaP" class="form-control validate" placeholder="Precio Venta">
+                </div>
+
+              </div>
+              <div class="modal-footer d-flex justify-content-center">
+                <button id="crearProducto" class="btn btn btn-outline-primary my-2 my-sm-0">Crear</button>
+              </div>
+
+            </form>
+
+            </div>
+          </div>
+        </div>
+
+
+        <div class="modal fade" id="modalVerProducto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content unique-color-dark text-white">
+              <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Modificar Producto</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <form id="actualizarProductoForm" class="text-center border border-light" role="form">
+
+              <div class="modal-body mx-3">
+
+                <div class="md-form mb-5 d-none">
+                  <input type="text" id="vpId" name="idAP" class="d-none">
+                </div>
+
+                <div class="md-form mb-5">
+                  <input type="text" id="vpNombre" name="nombreAP" class="form-control validate" placeholder="Nombre">
+                </div>
+
+                <div class="md-form mb-4">
+                  <input type="text" id="vpTipo" name="tipoAP" class="form-control validate" placeholder="Tipo">
+                </div>
+
+                <div class="md-form mb-4">
+                  <input type="number" id="vpCantidad" name="contidadAP" class="form-control validate" placeholder="Cantidad">
+                </div>
+
+                <div class="md-form mb-4">
+                  <input type="number" step="0.01" id="vpPrecioCompra" name="precioCompraAP" class="form-control validate" placeholder="Precio Compra">
+                </div>
+
+                <div class="md-form mb-4">
+                  <input type="number" step="0.01" id="vpPrecioVenta" name="precioVentaAP" class="form-control validate" placeholder="Precio Venta">
+                </div>
+
+              </div>
+              <div class="modal-footer d-flex justify-content-center">
+                <button id="actualizarProducto" class="btn btn btn-outline-primary my-2 my-sm-0">Guardar</button>
+              </div>
+
+            </form>
+
+            </div>
+          </div>
+        </div>
+
+
+     </div>
+
+</body>
+
+<script src="{{ url_for('static', filename='js/inventario.js') }}"></script>
+
+</html>
