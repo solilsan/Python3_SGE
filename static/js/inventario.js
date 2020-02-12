@@ -69,8 +69,7 @@ $('#crearProducto').click(function() {
 
   if (validarC()){
 
-      $('#modalCrearProducto').hide();
-      $('.modal-backdrop').hide();
+      $('#modalCrearProducto').modal('hide');
 
         $.ajax({
             url: '/crearProducto',
