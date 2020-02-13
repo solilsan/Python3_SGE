@@ -61,6 +61,10 @@ $('#botonCrearCompra').click(function() {
 
         $("#sProductos").append('<option value='+data[0][0]+' selected>'+data[0][1]+'</option>');
 
+        for (var i = 1; i < data.length; i++) {
+          $("#sProductos").append('<option value='+data[i][0]+' selected>'+data[i][1]+'</option>');
+        }
+
         $('#modalCrearCompra').modal('show');
 
       },
