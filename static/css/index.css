@@ -41,5 +41,11 @@ input {
 }
 
 .dropdown-item:focus, .dropdown-item:hover {
-    background-color: #007bff !important;
+  background-color: black !important;
+  border: 1px solid white !important;
+}
+
+.menuB {
+  border: 1px solid #fdfdfd !important;
+  color: white !important;
 }
