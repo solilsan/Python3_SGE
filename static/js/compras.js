@@ -46,3 +46,23 @@ function cargarDatos(){
   } 
 
 cargarDatos()
+
+$('#botonCrearCompra').click(function() {
+
+  $.ajax({
+      url: '/selectInventario',
+      type: 'POST',
+      success: function(response) {
+
+        var dataSet = JSON.parse(response)['datos']
+        debugger
+
+      },
+      error: function(error) {
+          console.log(error);
+      }
+  });
+
+  return false
+
+});

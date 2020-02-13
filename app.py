@@ -332,6 +332,26 @@ def cargarCompras():
 
 	return json.dumps({'datos':listaDatos})
 
+@app.route('/selectInventario', methods=['POST'])
+def selectInventario():
+
+	listaDatos = []
+
+	with open(os.getcwd()+'/Python3_SGE/listaInventario.csv', 'r', encoding="ISO-8859-15") as lc:
+
+		readerlc = csv.reader(lc, delimiter=';', quotechar=';',
+	                      quoting=csv.QUOTE_MINIMAL)
+
+		next(readerlc)
+
+		for rowlc in readerlc:
+			datos = []
+			datos.append(rowlc[0])
+			datos.append(rowlc[1])
+			listaDatos.append(datos)
+
+	return json.dumps({'datos':listaDatos})
+
 
 #Inicio de la aplicación.
 if __name__ == "__main__":
