@@ -52,6 +52,7 @@ $('#botonCrearCompra').click(function() {
   $.ajax({
       url: '/selectInventario',
       type: 'POST',
+      async, false,
       success: function(response) {
 
         var data = JSON.parse(response)['datos']
