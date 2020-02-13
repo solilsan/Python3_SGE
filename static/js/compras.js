@@ -59,7 +59,7 @@ $('#botonCrearCompra').click(function() {
       async: false,
       success: function(response) {
 
-        var preciosProductos = []
+        preciosProductos = []
 
         $("#sProductos").empty();
 
