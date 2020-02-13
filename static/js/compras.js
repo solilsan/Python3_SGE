@@ -57,7 +57,7 @@ $('#botonCrearCompra').click(function() {
       async: false,
       success: function(response) {
 
-        $("sProductos").empty();
+        $("#sProductos").empty();
 
         var data = JSON.parse(response)['datos']
 
@@ -88,7 +88,7 @@ $('#botonCrearCompra').click(function() {
       async: false,
       success: function(response) {
 
-        $("sProveedor").empty();
+        $("#sProveedor").empty();
 
         var data = JSON.parse(response)['datos']
 
