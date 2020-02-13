@@ -128,3 +128,7 @@ $('#botonCrearCompra').click(function() {
   return false
 
 });
+
+$('#sProductos').on('change', function() {
+  alert(preciosProductos[this.value]);
+});
