@@ -72,3 +72,15 @@ outline-info.dropdown-toggle {
 .btn-outline-info:not([disabled]):not(.disabled).active, .btn-outline-info:not([disabled]):not(.disabled):active, .show > .btn-outline-info.dropdown-toggle {
   border-color: white !important;
 }
+
+::-webkit-input-placeholder { /* Edge */
+  color: white;
+}
+
+:-ms-input-placeholder { /* Internet Explorer */
+  color: white;
+}
+
+::placeholder {
+  color: white;
+}
