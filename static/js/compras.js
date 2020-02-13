@@ -7,7 +7,6 @@ $(document).ajaxStart(function() {
 $(document).ajaxStop(function() { 
 
     $('#div_carga').hide();
-    $('#modalCrearCompra').modal('show');
 
 });
 
@@ -58,12 +57,19 @@ $('#botonCrearCompra').click(function() {
 
         var data = JSON.parse(response)['datos']
 
-        debugger
+        if (data.length > 1){
 
-        $("#sProductos").append('<option value='+data[0][0]+' selected>'+data[0][1]+'</option>');
+          $("#sProductos").append('<option value='+data[0][0]+' selected>'+data[0][1]+'</option>');
+  
+          for (var i = 1; i < data.length; i++) {
+            $("#sProductos").append('<option value='+data[i][0]+'>'+data[i][1]+'</option>');
+          }
 
-        for (var i = 1; i < data.length; i++) {
-          $("#sProductos").append('<option value='+data[i][0]+'>'+data[i][1]+'</option>');
+        }
+        else {
+
+          $("#sProductos").append('<option value='+data[0][0]+' selected>'+data[0][1]+'</option>');
+
         }
 
       },
@@ -80,12 +86,19 @@ $('#botonCrearCompra').click(function() {
 
         var data = JSON.parse(response)['datos']
 
-        debugger
+        if (data.length > 1) {
 
-        $("#sProveedor").append('<option value='+data[0][0]+' selected>'+data[0][1]+'</option>');
+          $("#sProveedor").append('<option value='+data[0][0]+' selected>'+data[0][1]+'</option>');
+  
+          for (var i = 1; i < data.length; i++) {
+            $("#sProveedor").append('<option value='+data[i][0]+'>'+data[i][1]+'</option>');
+          }
 
-        for (var i = 1; i < data.length; i++) {
-          $("#sProveedor").append('<option value='+data[i][0]+'>'+data[i][1]+'</option>');
+        }
+        else {
+
+          $("#sProveedor").append('<option value='+data[0][0]+' selected>'+data[0][1]+'</option>');
+
         }
 
       },
@@ -93,6 +106,8 @@ $('#botonCrearCompra').click(function() {
           console.log(error);
       }
   });
+
+  $('#modalCrearCompra').modal('show');
 
   return false
 
