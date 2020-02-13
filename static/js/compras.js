@@ -68,6 +68,7 @@ $('#botonCrearCompra').click(function() {
           $("#sProductos").append('<option value='+data[0][0]+' selected>'+data[0][1]+'</option>');
           let precioS = data[0][2]
           preciosProductos.push(parseFloat(precioS.substring(0, precioS.length-1)))
+          $('#precioCP').val(parseFloat(precioS.substring(0, precioS.length-1)));
   
           for (var i = 1; i < data.length; i++) {
             $("#sProductos").append('<option value='+data[i][0]+'>'+data[i][1]+'</option>');
@@ -81,6 +82,7 @@ $('#botonCrearCompra').click(function() {
           $("#sProductos").append('<option value='+data[0][0]+' selected>'+data[0][1]+'</option>');
           let precioS = data[0][2]
           preciosProductos.push(parseFloat(precioS.substring(0, precioS.length-1)))
+          $('#precioCP').val(parseFloat(precioS.substring(0, precioS.length-1)));
 
         }
 
@@ -130,5 +132,5 @@ $('#botonCrearCompra').click(function() {
 });
 
 $('#sProductos').on('change', function() {
-  alert(preciosProductos[this.value-1]);
+  $('#precioCP').val(preciosProductos[this.value-1]);
 });
