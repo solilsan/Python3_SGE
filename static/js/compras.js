@@ -47,6 +47,7 @@ function cargarDatos(){
 
   } 
 
+
 cargarDatos()
 
 var preciosProductos = []
