@@ -106,16 +106,16 @@ $('#botonCrearCompra').click(function() {
 
         if (data.length > 1) {
 
-          $("#sProveedor").append('<option id='+1+' value='+data[0][0]+' selected>'+data[0][1]+'</option>');
+          $("#sProveedor").append('<option value='+data[0][0]+' selected>'+data[0][1]+'</option>');
   
           for (var i = 1; i < data.length; i++) {
-            $("#sProveedor").append('<option id='+(i+1)+' value='+data[i][0]+'>'+data[i][1]+'</option>');
+            $("#sProveedor").append('<option value='+data[i][0]+'>'+data[i][1]+'</option>');
           }
 
         }
         else {
 
-          $("#sProveedor").append('<option id='+1+' value='+data[0][0]+' selected>'+data[0][1]+'</option>');
+          $("#sProveedor").append('<option value='+data[0][0]+' selected>'+data[0][1]+'</option>');
 
         }
 
@@ -132,8 +132,6 @@ $('#botonCrearCompra').click(function() {
 });
 
 $('#sProductos').on('change', function() {
-  let i = this.id
   let x = parseInt(this.value) - 1
-  debugger
   $('#precioCP').val(preciosProductos[x]);
 });
