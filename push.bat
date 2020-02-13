@@ -1,10 +1,10 @@
 @echo off
 git add .
 echo.
-set/p comentario = ¿Comentario para el commit?
+set /p msg=¿Comentario para el commit?
 echo.
-echo %comentario%
-git commit -m " & %comentario% & "
+echo "%msg%"
+git commit -m "%msg%"
 git push
 echo.
 echo Push completo.
