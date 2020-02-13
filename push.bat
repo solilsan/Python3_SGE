@@ -3,6 +3,7 @@ git add .
 echo.
 set/p comentario = ¿Comentario para el commit?
 echo.
+echo %comentario%
 git commit -m " & %comentario% & "
 git push
 echo.
