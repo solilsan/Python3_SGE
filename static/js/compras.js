@@ -7,6 +7,7 @@ $(document).ajaxStart(function() {
 $(document).ajaxStop(function() { 
 
     $('#div_carga').hide();
+    $('#modalCrearCompra').modal('show');
 
 });
 
@@ -65,7 +66,27 @@ $('#botonCrearCompra').click(function() {
           $("#sProductos").append('<option value='+data[i][0]+'>'+data[i][1]+'</option>');
         }
 
-        $('#modalCrearCompra').modal('show');
+      },
+      error: function(error) {
+          console.log(error);
+      }
+  });
+
+  $.ajax({
+      url: '/selectProveedor',
+      type: 'POST',
+      async: false,
+      success: function(response) {
+
+        var data = JSON.parse(response)['datos']
+
+        debugger
+
+        $("#sProveedor").append('<option value='+data[0][0]+' selected>'+data[0][1]+'</option>');
+
+        for (var i = 1; i < data.length; i++) {
+          $("#sProveedor").append('<option value='+data[i][0]+'>'+data[i][1]+'</option>');
+        }
 
       },
       error: function(error) {
