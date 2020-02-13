@@ -59,6 +59,8 @@ $('#botonCrearCompra').click(function() {
       async: false,
       success: function(response) {
 
+        var preciosProductos = []
+
         $("#sProductos").empty();
 
         var data = JSON.parse(response)['datos']
