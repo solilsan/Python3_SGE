@@ -54,8 +54,13 @@ $('#botonCrearCompra').click(function() {
       type: 'POST',
       success: function(response) {
 
-        var dataSet = JSON.parse(response)['datos']
+        var data = JSON.parse(response)['datos']
+
+        var z = data[0]
+
         debugger
+
+        $("#sProductos").append('<option value='+data[0]+' selected>'+data[1]+'</option>');
 
       },
       error: function(error) {
