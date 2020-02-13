@@ -72,3 +72,7 @@ outline-info.dropdown-toggle {
 .btn-outline-info:not([disabled]):not(.disabled).active, .btn-outline-info:not([disabled]):not(.disabled):active, .show > .btn-outline-info.dropdown-toggle {
   border-color: white !important;
 }
+
+button {
+  border-radius: 15px 15px 15px 15px;
+}
