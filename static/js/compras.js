@@ -71,7 +71,7 @@ $('#botonCrearCompra').click(function() {
   
           for (var i = 1; i < data.length; i++) {
             $("#sProductos").append('<option value='+data[i][0]+'>'+data[i][1]+'</option>');
-            let precio = data[0][2]
+            let precio = data[i][2]
             preciosProductos.push(parseFloat(precio.substring(0, precio.length-1)))
           }
 
