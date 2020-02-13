@@ -337,7 +337,7 @@ def selectInventario():
 
 	listaDatos = []
 
-	with open(os.getcwd()+'/Python3_SGE/listaInventario.csv', 'r', encoding="ISO-8859-15") as lc:
+	with open(os.getcwd()+'/Python3_SGE/datos/listaInventario.csv', 'r', encoding="ISO-8859-15") as lc:
 
 		readerlc = csv.reader(lc, delimiter=';', quotechar=';',
 	                      quoting=csv.QUOTE_MINIMAL)
