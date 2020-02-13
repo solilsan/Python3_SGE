@@ -61,6 +61,8 @@ $('#botonCrearCompra').click(function() {
 
         $("#sProductos").append('<option value='+data[0][0]+' selected>'+data[0][1]+'</option>');
 
+        $('#modalCrearCompra').modal('show');
+
       },
       error: function(error) {
           console.log(error);
