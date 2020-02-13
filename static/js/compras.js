@@ -66,18 +66,21 @@ $('#botonCrearCompra').click(function() {
         if (data.length > 1){
 
           $("#sProductos").append('<option value='+data[0][0]+' selected>'+data[0][1]+'</option>');
-          preciosProductos.push(data[0][2])
+          let precioS = data[0][2]
+          preciosProductos.push(parseInt(precioS.substring(0, precioS.length-1)))
   
           for (var i = 1; i < data.length; i++) {
             $("#sProductos").append('<option value='+data[i][0]+'>'+data[i][1]+'</option>');
-            preciosProductos.push(data[i][2])
+            let precio = data[0][2]
+            preciosProductos.push(parseInt(precio.substring(0, precio.length-1)))
           }
 
         }
         else {
 
           $("#sProductos").append('<option value='+data[0][0]+' selected>'+data[0][1]+'</option>');
-          preciosProductos.push(data[0][2])
+          let precioS = data[0][2]
+          preciosProductos.push(parseInt(precioS.substring(0, precioS.length-1)))
 
         }
 
