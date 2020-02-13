@@ -63,3 +63,8 @@ outline-info.dropdown-toggle {
   border: 1px solid white;
   padding: 10px;
 }
+
+.btn-outline-info.active, .btn-outline-info:active, .btn-outline-info:active:focus, .btn-outline-info:focus, .btn-outline-info:hover, .navbar-brand {
+  border-color: white !important;
+  color: white !important;
+}
