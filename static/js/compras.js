@@ -81,6 +81,8 @@ $('#botonCrearCompra').click(function() {
 
         }
 
+        debugger
+
       },
       error: function(error) {
           console.log(error);
