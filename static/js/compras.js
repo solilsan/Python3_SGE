@@ -132,7 +132,7 @@ $('#botonCrearCompra').click(function() {
 });
 
 $('#sProductos').on('change', function() {
-  let x = this.value
+  let x = parseInt(this.value) - 1
   debugger
-  $('#precioCP').val(preciosProductos[this.value-1]);
+  $('#precioCP').val(preciosProductos[x]);
 });
