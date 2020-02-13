@@ -88,8 +88,6 @@ $('#botonCrearCompra').click(function() {
 
         }
 
-        debugger
-
       },
       error: function(error) {
           console.log(error);
@@ -134,5 +132,7 @@ $('#botonCrearCompra').click(function() {
 });
 
 $('#sProductos').on('change', function() {
+  let x = this.value
+  debugger
   $('#precioCP').val(preciosProductos[this.value-1]);
 });
