@@ -14,6 +14,15 @@
   <script type="text/javascript" src="{{ url_for('static', filename='js/addons/datatables-select.min.js') }}"></script>
 	<script src="{{ url_for('static', filename='js/index.js') }}"></script>
 
+  <style type="text/css">
+    
+    .pSelect {
+      background-color: #1c2331;
+      color: white;
+    }
+
+  </style>
+
 </head>
 <body class="elegant-color-dark">
 
@@ -117,12 +126,14 @@
                 </div>
 
                 <div class="md-form mb-5">
+
+                  <p class="col-2">Producto</p>
                   
-                  <select class="browser-default custom-select">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
+                  <select class="browser-default custom-select col-8 pSelect">
+                    <option value="1" selected>One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
+                    <option value="4">Four</option>
                   </select>
 
                 </div>
