@@ -130,5 +130,5 @@ $('#botonCrearCompra').click(function() {
 });
 
 $('#sProductos').on('change', function() {
-  alert(preciosProductos[this.value]);
+  alert(preciosProductos[this.value-1]);
 });
