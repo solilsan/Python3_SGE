@@ -348,6 +348,7 @@ def selectInventario():
 			datos = []
 			datos.append(rowlc[0])
 			datos.append(rowlc[1])
+			datos.append(rowlc[4])
 			listaDatos.append(datos)
 
 	return json.dumps({'datos':listaDatos})

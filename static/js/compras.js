@@ -49,6 +49,8 @@ function cargarDatos(){
 
 cargarDatos()
 
+var preciosProductos = []
+
 $('#botonCrearCompra').click(function() {
 
   $.ajax({
@@ -64,15 +66,18 @@ $('#botonCrearCompra').click(function() {
         if (data.length > 1){
 
           $("#sProductos").append('<option value='+data[0][0]+' selected>'+data[0][1]+'</option>');
+          preciosProductos.push(data[0][2])
   
           for (var i = 1; i < data.length; i++) {
             $("#sProductos").append('<option value='+data[i][0]+'>'+data[i][1]+'</option>');
+            preciosProductos.push(data[i][2])
           }
 
         }
         else {
 
           $("#sProductos").append('<option value='+data[0][0]+' selected>'+data[0][1]+'</option>');
+          preciosProductos.push(data[0][2])
 
         }
 
