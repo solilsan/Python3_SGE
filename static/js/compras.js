@@ -1,12 +1,14 @@
 
 $(document).ajaxStart(function() { 
 
+    $('#dt-select_wrapper').hide();
     $('#div_carga').show();
 
 });
 $(document).ajaxStop(function() { 
 
     $('#div_carga').hide();
+    $('#dt-select_wrapper').show();
 
 });
 
