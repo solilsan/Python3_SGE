@@ -33,25 +33,43 @@
 
                 <li class="nav-item">
 
-                  <a id="bIventario" class="nav-link active" href="/inventario.html"><u>Inventario</u></a>
+                  <div class="dropdown">
+                    <button class="btn btn-outline-info dropdown-toggle" type="button" id="dropdownMenuButtonInventario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Inventario</button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonInventario">
+                      <a class="dropdown-item active" href="/inventario.html">Crear</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                    </div>
+                  </div>
 
                 </li>
 
                 <li class="nav-item">
 
-                  <a class="nav-link" href="#">Ventas</a>
+                  <div class="dropdown">
+                    <button class="btn btn-outline-info dropdown-toggle" type="button" id="dropdownMenuButtonVentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ventas</button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonVentas">
+                      <a class="dropdown-item active" href="/inventario.html">Crear</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                    </div>
+                  </div>
 
                 </li>
 
                 <li class="nav-item">
 
-                  <a class="nav-link" href="/compras.html">Compras</a>
+                  <div class="dropdown">
+                    <button class="btn btn-outline-info dropdown-toggle" type="button" id="dropdownMenuButtonCompras" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Compras</button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonCompras">
+                      <a class="dropdown-item active" href="/compras.html">Crear</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                    </div>
+                  </div>
 
                 </li>
 
               </ul>
 
-              <form class="form-inline my-2 my-lg-0" role="form">
+              <form class="form-inline my-2 my-lg-0" action="/logout" method="post" role="form">
 
                 <button id="logout" class="btn btn btn-outline-primary my-2 my-sm-0" type="button">Salir</button>
 
