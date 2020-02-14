@@ -9,25 +9,21 @@ $(document).ajaxStop(function() {
 
     $('#div_carga').hide();
     $('#dt-select_wrapper').show();
-    debugger
 
 });
 
+var table
 
 function cargarDatos(){
-
-  debugger
 
     $.ajax({
       url: '/cargarCompras',
       type: 'POST',
       success: function(response) { 
 
-        debugger
-
         var dataSet = JSON.parse(response)['datos']
 
-        var table = $('#dt-select').DataTable({
+        table = $('#dt-select').DataTable({
           data: dataSet,
             columns: [
               {title: "id", visible: false},
@@ -41,8 +37,6 @@ function cargarDatos(){
             dom: 'Bfrtip',
             select: false
         });
-
-        debugger
 
       },
       error: function(error) {
@@ -207,8 +201,6 @@ $('#crearCompra').click(function() {
 
               table.destroy();
               cargarDatos()
-
-              debugger
 
             },
             error: function(error) {
