@@ -220,3 +220,27 @@ $('#crearCompra').click(function() {
       }
 
     });
+
+function borrar(data){
+
+    $.ajax({
+            url: '/borrarCompra',
+            data: { idCompra : data },
+            type: 'POST',
+            async:false,
+            success: function(response) {
+
+              table.destroy();
+              cargarDatos()
+
+            },
+            error: function(error) {
+
+                console.log(error);
+
+            }
+        });
+
+    return false
+
+}

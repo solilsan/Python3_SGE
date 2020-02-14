@@ -250,8 +250,6 @@ def actualizarProducto():
 
 	return json.dumps(1);
 
-
-
 #Redireccion a /inventario.html
 @app.route('/compras.html')
 def compras():
@@ -426,6 +424,26 @@ def crearCompra():
 
 	return json.dumps(1);
 
+@app.route('/borrarCompra', methods=['POST'])
+def borrarCompra():
+
+	idCompra = request.form['idCompra']
+
+	with open(os.getcwd()+'/Python3_SGE/datos/listaCompras.csv', 'r', encoding="ISO-8859-15") as inp, open(os.getcwd()+'/Python3_SGE/datos/new.csv', 'w', encoding="ISO-8859-15") as out:
+
+		writer = csv.DictWriter(out, dialect='unix', delimiter=";", quotechar=";",
+    		fieldnames =("ID", "PRODUCTO", "PROVEEDOR", "CANTIDAD", "PRECIO", "TOTAL", "CONTROLES") , quoting=csv.QUOTE_MINIMAL)
+
+		writer.writeheader() #Evitamos borrar los titulos (fieldnames)
+
+		for rowbp in csv.DictReader(inp, dialect='unix', delimiter=";"):
+			if rowbp["ID"] != idCompra: #Creamos el nuevo archivo con todos los datos menos la fila con el id devuelto
+				writer.writerow(rowbp)
+
+	os.remove(os.getcwd()+'/Python3_SGE/datos/listaCompras.csv') #Removemos el anterior archivo
+	os.rename(os.getcwd()+'/Python3_SGE/datos/new.csv', os.getcwd()+'/Python3_SGE/datos/listaCompras.csv') #Cambiamos el nombre del nuevo archivo al nombre del anterior
+
+	return json.dumps(1);
 
 #Inicio de la aplicación.
 if __name__ == "__main__":
