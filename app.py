@@ -387,6 +387,43 @@ def selectProveedor():
 
 	return json.dumps({'datos':listaDatos})
 
+@app.route('/crearCompra', methods=['POST'])
+def crearCompra():
+	result = []
+
+	with open(os.getcwd()+'/Python3_SGE/datos/listaCompras.csv', 'r', encoding="ISO-8859-15") as inp, open(os.getcwd()+'/Python3_SGE/datos/new.csv', 'w', encoding="ISO-8859-15") as out:
+	
+			writer = csv.DictWriter(out, delimiter=";", quotechar=";",
+	    		fieldnames =("ID", "PRODUCTO", "PROVEEDOR", "CANTIDAD", "PRECIO", "TOTAL", "CONTROLES"), quoting=csv.QUOTE_MINIMAL)
+			
+			writer.writeheader()
+	
+			readercp = csv.DictReader(inp, delimiter=";") #Leer archivo viejo
+	
+			for rowcp in readercp:
+				result.append(rowcp) #Guardamos los datos del archivo viejo en una lista
+	
+			ID = 0
+			try:
+				ID = int((int(rowcp['ID'][-1]) + 1)) #Recogemos el id del ultimo elemento del archivo y le sumamos 1
+			except NameError:
+				ID = 1 #Si no hay ningun elemento en el archivo ponemos el id a 1
+	
+			producto = request.form['sProductos']
+			proveedor = request.form['sProveedor']
+			cantidad = str(request.form['cantidadCP']) + "$"
+			precio = str(request.form['precioCP']) + "$"
+			total = str(request.form['totalCP']) + "$"
+			controles = '<button onclick="comprar({})" class="btn btn btn-outline-warning" type="button">Comprar</button><button onclick="borrar({})" class="btn btn btn-outline-danger mt-2" type="button">Borrar</button>'.format(ID, ID)
+			
+			data = {'ID': ID, 'PRODUCTO': producto, "PROVEEDOR": proveedor, "CANTIDAD": cantidad, "PRECIO": precio, "TOTAL": total, "CONTROLES": controles}
+			
+			result.append(data) #Añadimos el nuevo elemento a la lista
+			writer.writerows(result) #Añadimos los datos de la lista en el nuevo archivo
+	
+	os.remove(os.getcwd()+'/Python3_SGE/datos/listaCompras.csv')
+	os.rename(os.getcwd()+'/Python3_SGE/datos/new.csv', os.getcwd()+'/Python3_SGE/datos/listaCompras.csv')
+
 
 #Inicio de la aplicación.
 if __name__ == "__main__":

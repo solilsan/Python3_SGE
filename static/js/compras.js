@@ -150,3 +150,56 @@ $("#cantidadCP").on("change paste keyup", function() {
   $('#totalCP').val(cantidad*precio)
   
 });
+
+
+function validarC(){
+
+  let valido = true
+
+  if ($('#cantidadCP').val() == "" || $('#precioCP').val() == "" || $('#totalCP').val() == "" || parseInt($('#cantidadCP').val()) < 0 || parseFloat($('#precioCP').val()) < 0 || parseFloat($('#totalCP').val()) < 0){
+
+    valido = false
+  }
+
+  return valido
+
+}
+
+$('#crearCompra').click(function() {
+
+  let x = $('#crearCompraForm').serialize()
+
+  debugger
+
+  if (validarC()){
+
+      $('#modalCrearCompra').modal('hide');
+
+        $.ajax({
+            url: '/crearCompra',
+            data: $('#crearCompraForm').serialize(),
+            type: 'POST',
+            async:false,
+            success: function(response) {
+
+              table.destroy();
+              cargarDatos()
+
+            },
+            error: function(error) {
+
+                console.log(error);
+
+            }
+        });
+
+        return false
+
+      }
+      else {
+
+        return false
+
+      }
+
+    });
