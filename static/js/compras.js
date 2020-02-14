@@ -9,6 +9,7 @@ $(document).ajaxStop(function() {
 
     $('#div_carga').hide();
     $('#dt-select_wrapper').show();
+    debugger
 
 });
 
