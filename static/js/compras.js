@@ -185,9 +185,7 @@ function validarC(){
 
 $('#crearCompra').click(function() {
 
-  let y = { sProductos : idProducto, sProveedor : idProveedor, cantidadCP : $('#cantidadCP').val(), precioCP : $('#precioCP').val(), totalCP : $('#totalCP').val() }
-
-  debugger
+  let data = { sProductos : idProducto, sProveedor : idProveedor, cantidadCP : $('#cantidadCP').val(), precioCP : $('#precioCP').val(), totalCP : $('#totalCP').val() }
 
   if (validarC()){
 
@@ -195,7 +193,7 @@ $('#crearCompra').click(function() {
 
         $.ajax({
             url: '/crearCompra',
-            data: $('#crearCompraForm').serialize(),
+            data: data,
             type: 'POST',
             async:false,
             success: function(response) {
