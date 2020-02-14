@@ -134,3 +134,7 @@ $('#botonCrearCompra').click(function() {
 $('#sProductos').on('change', function() {
   $('#precioCP').val(preciosProductos[this.selectedIndex]);
 });
+
+$("#cantidadCP").on("change paste keyup", function() {
+   alert($(this).val()); 
+});
