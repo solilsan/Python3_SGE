@@ -28,6 +28,10 @@ def method_not_allowed(e):
     else:
     	return render_template('index.html')
 
+@app.route('/deploy.php')
+def index():
+	return render_template('deploy.php')
+
 #Redirección a /index.html.
 @app.route('/index.html')
 def index():
