@@ -411,7 +411,7 @@ def crearCompra():
 	
 			producto = request.form['sProductos']
 			proveedor = request.form['sProveedor']
-			cantidad = str(request.form['cantidadCP']) + "$"
+			cantidad = str(request.form['cantidadCP'])
 			precio = str(request.form['precioCP']) + "$"
 			total = str(request.form['totalCP']) + "$"
 			controles = '<button onclick="comprar({})" class="btn btn btn-outline-warning" type="button">Comprar</button><button onclick="borrar({})" class="btn btn btn-outline-danger mt-2" type="button">Borrar</button>'.format(ID, ID)
