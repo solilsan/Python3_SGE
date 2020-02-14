@@ -189,6 +189,8 @@ $('#crearCompra').click(function() {
 
   let x = $('#crearCompraForm').serialize()
 
+  let p = y+x
+
   debugger
 
   if (validarC()){
