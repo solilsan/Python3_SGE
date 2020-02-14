@@ -1,8 +1,4 @@
 
-$(function(){
-      $("#nav").load("nav.html"); 
-});
-
 $(document).ajaxStart(function() {
 
     $('#dt-select_wrapper').hide();
