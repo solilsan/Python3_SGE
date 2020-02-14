@@ -67,13 +67,13 @@ $('#botonCrearCompra').click(function() {
 
         if (data.length > 1){
 
-          $("#sProductos").append('<option id="p'+1+'" value='+data[0][0]+' selected>'+data[0][1]+'</option>');
+          $("#sProductos").append('<option value='+data[0][0]+' selected>'+data[0][1]+'</option>');
           let precioS = data[0][2]
           preciosProductos.push(parseFloat(precioS.substring(0, precioS.length-1)))
           $('#precioCP').val(parseFloat(precioS.substring(0, precioS.length-1)));
   
           for (var i = 1; i < data.length; i++) {
-            $("#sProductos").append('<option id="p'+(i+1)+'" value='+data[i][0]+'>'+data[i][1]+'</option>');
+            $("#sProductos").append('<option value='+data[i][0]+'>'+data[i][1]+'</option>');
             let precio = data[i][2]
             preciosProductos.push(parseFloat(precio.substring(0, precio.length-1)))
           }
@@ -81,7 +81,7 @@ $('#botonCrearCompra').click(function() {
         }
         else {
 
-          $("#sProductos").append('<option id="p'+1+'" value='+data[0][0]+' selected>'+data[0][1]+'</option>');
+          $("#sProductos").append('<option value='+data[0][0]+' selected>'+data[0][1]+'</option>');
           let precioS = data[0][2]
           preciosProductos.push(parseFloat(precioS.substring(0, precioS.length-1)))
           $('#precioCP').val(parseFloat(precioS.substring(0, precioS.length-1)));
@@ -132,8 +132,5 @@ $('#botonCrearCompra').click(function() {
 });
 
 $('#sProductos').on('change', function() {
-  let c = this.selectedIndex;
-  debugger
-  let x = parseInt(this.value) - 1
-  $('#precioCP').val(preciosProductos[x]);
+  $('#precioCP').val(preciosProductos[this.selectedIndex]);
 });
