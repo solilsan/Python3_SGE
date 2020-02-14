@@ -132,15 +132,20 @@ $('#botonCrearCompra').click(function() {
 });
 
 $('#sProductos').on('change', function() {
+
   $('#precioCP').val(preciosProductos[this.selectedIndex]);
+
+  let cantidad = parseInt($('#cantidadCP').val())
+  let precio = parseFloat($('#precioCP').val())
+
+  $('#totalCP').val(cantidad*precio)
+
 });
 
 $("#cantidadCP").on("change paste keyup", function() {
 
   let cantidad = parseInt($(this).val())
   let precio = parseFloat($('#precioCP').val())
-
-  debugger
 
   $('#totalCP').val(cantidad*precio)
   
