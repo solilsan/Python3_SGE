@@ -315,7 +315,7 @@ def cargarCompras():
 					index = 0
 
 				if index == 2:
-					with open('listaInventario.csv', 'r') as lp:
+					with open(os.getcwd()+'/Python3_SGE/datos/listaInventario.csv', 'r', encoding="ISO-8859-15") as lp:
 						readerlp = csv.reader(lp, delimiter=';', quotechar=';',	quoting=csv.QUOTE_MINIMAL)
 
 						next(readerlp)
@@ -323,7 +323,7 @@ def cargarCompras():
 						for rowlp in readerlp:
 
 							if i == rowlp[0]:
-								
+
 								del datos[borrarI]
 								datos.append(rowlp[1])
 
