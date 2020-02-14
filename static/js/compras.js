@@ -50,6 +50,8 @@ function cargarDatos(){
 cargarDatos()
 
 var preciosProductos = []
+var idProducto
+var idProveedor
 
 $('#botonCrearCompra').click(function() {
 
@@ -67,6 +69,8 @@ $('#botonCrearCompra').click(function() {
 
         if (data.length > 1){
 
+          idProducto = data[0][0]
+
           $("#sProductos").append('<option value='+data[0][0]+' selected>'+data[0][1]+'</option>');
           let precioS = data[0][2]
           preciosProductos.push(parseFloat(precioS.substring(0, precioS.length-1)))
@@ -80,6 +84,8 @@ $('#botonCrearCompra').click(function() {
 
         }
         else {
+
+          idProducto = data[0][0]
 
           $("#sProductos").append('<option value='+data[0][0]+' selected>'+data[0][1]+'</option>');
           let precioS = data[0][2]
@@ -106,6 +112,8 @@ $('#botonCrearCompra').click(function() {
 
         if (data.length > 1) {
 
+          idProveedor = data[0][0]
+
           $("#sProveedor").append('<option value='+data[0][0]+' selected>'+data[0][1]+'</option>');
   
           for (var i = 1; i < data.length; i++) {
@@ -114,6 +122,8 @@ $('#botonCrearCompra').click(function() {
 
         }
         else {
+
+          idProveedor = data[0][0]
 
           $("#sProveedor").append('<option value='+data[0][0]+' selected>'+data[0][1]+'</option>');
 
@@ -133,6 +143,8 @@ $('#botonCrearCompra').click(function() {
 
 $('#sProductos').on('change', function() {
 
+  idProducto = this.value
+
   $('#precioCP').val(preciosProductos[this.selectedIndex]);
 
   let cantidad = parseInt($('#cantidadCP').val())
@@ -151,6 +163,12 @@ $("#cantidadCP").on("change paste keyup", function() {
   
 });
 
+$('#sProveedor').on('change', function() {
+
+  idProveedor = this.value
+
+});
+
 
 function validarC(){
 
@@ -166,6 +184,8 @@ function validarC(){
 }
 
 $('#crearCompra').click(function() {
+
+  let y = { sProductos : idProducto, sProveedor : idProveedor }
 
   let x = $('#crearCompraForm').serialize()
 
