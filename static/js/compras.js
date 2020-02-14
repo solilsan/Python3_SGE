@@ -199,8 +199,12 @@ $('#crearCompra').click(function() {
             async:false,
             success: function(response) {
 
+              debugger
+
               table.destroy();
               cargarDatos()
+
+              debugger
 
             },
             error: function(error) {
