@@ -185,11 +185,7 @@ function validarC(){
 
 $('#crearCompra').click(function() {
 
-  let y = { sProductos : idProducto, sProveedor : idProveedor }
-
-  let x = $('#crearCompraForm').serialize()
-
-  let p = y+x
+  let y = { sProductos : idProducto, sProveedor : idProveedor, cantidadCP : $('#cantidadCP').val(), precioCP : $('#precioCP').val(), totalCP : $('#totalCP').val() }
 
   debugger
 
