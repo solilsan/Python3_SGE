@@ -137,7 +137,7 @@ $('#sProductos').on('change', function() {
 
 $("#cantidadCP").on("change paste keyup", function() {
 
-  let cantidad = parseInt(this.val)
+  let cantidad = parseInt($(this).val())
   let precio = parseFloat($('#precioCP').val())
 
   debugger
