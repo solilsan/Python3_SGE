@@ -387,6 +387,7 @@ def selectProveedor():
 
 @app.route('/crearCompra', methods=['POST'])
 def crearCompra():
+	
 	result = []
 
 	with open(os.getcwd()+'/Python3_SGE/datos/listaCompras.csv', 'r', encoding="ISO-8859-15") as inp, open(os.getcwd()+'/Python3_SGE/datos/new.csv', 'w', encoding="ISO-8859-15") as out:
