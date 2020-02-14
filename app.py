@@ -424,6 +424,8 @@ def crearCompra():
 	os.remove(os.getcwd()+'/Python3_SGE/datos/listaCompras.csv')
 	os.rename(os.getcwd()+'/Python3_SGE/datos/new.csv', os.getcwd()+'/Python3_SGE/datos/listaCompras.csv')
 
+	return json.dumps(1);
+
 
 #Inicio de la aplicación.
 if __name__ == "__main__":
