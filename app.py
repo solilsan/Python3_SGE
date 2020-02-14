@@ -298,7 +298,8 @@ def cargarCompras():
 		next(readerlc)
 
 		index = 0 #Cantidad de elementos que tiene el archivo listaCompra.csv
-		borrar = 2 #Posicion en la que borrar el id
+		borrarP = 2 #Posicion en la que borrar el id del proveedor
+		borrarI = 1 #Posicion en la que borrar el id del invenario
 
 		for rowlc in readerlc:
 
@@ -313,6 +314,19 @@ def cargarCompras():
 
 					index = 0
 
+				if index == 2:
+					with open('listaInventario.csv', 'r') as lp:
+						readerlp = csv.reader(lp, delimiter=';', quotechar=';',	quoting=csv.QUOTE_MINIMAL)
+
+						next(readerlp)
+
+						for rowlp in readerlp:
+
+							if i == rowlp[0]:
+								
+								del datos[borrarI]
+								datos.append(rowlp[1])
+
 				if index == 3:
 
 					with open(os.getcwd()+'/Python3_SGE/datos/listaProveedors.csv', 'r', encoding="ISO-8859-15") as lp:
@@ -325,7 +339,7 @@ def cargarCompras():
 
 							if i == rowlp[0]:
 
-								del datos[borrar]
+								del datos[borrarP]
 								datos.append(rowlp[1])
 
 			listaDatos.append(datos)
