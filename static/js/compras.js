@@ -16,10 +16,14 @@ $(document).ajaxStop(function() {
 
 function cargarDatos(){
 
+  debugger
+
     $.ajax({
       url: '/cargarCompras',
       type: 'POST',
       success: function(response) { 
+
+        debugger
 
         var dataSet = JSON.parse(response)['datos']
 
@@ -37,6 +41,8 @@ function cargarDatos(){
             dom: 'Bfrtip',
             select: false
         });
+
+        debugger
 
       },
       error: function(error) {
@@ -198,8 +204,6 @@ $('#crearCompra').click(function() {
             type: 'POST',
             async:false,
             success: function(response) {
-
-              debugger
 
               table.destroy();
               cargarDatos()
