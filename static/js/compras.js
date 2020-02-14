@@ -136,5 +136,10 @@ $('#sProductos').on('change', function() {
 });
 
 $("#cantidadCP").on("change paste keyup", function() {
-   alert($(this).val()); 
+
+  let cantidad = parseInt(this.val)
+  let precio = parseFloat($('#precioCP').val())
+
+  $('#totalCP').val(cantidad*precio)
+  
 });
