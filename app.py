@@ -387,7 +387,7 @@ def selectProveedor():
 
 @app.route('/crearCompra', methods=['POST'])
 def crearCompra():
-	
+
 	result = []
 
 	with open(os.getcwd()+'/Python3_SGE/datos/listaCompras.csv', 'r', encoding="ISO-8859-15") as inp, open(os.getcwd()+'/Python3_SGE/datos/new.csv', 'w', encoding="ISO-8859-15") as out:
@@ -443,6 +443,87 @@ def borrarCompra():
 
 	os.remove(os.getcwd()+'/Python3_SGE/datos/listaCompras.csv') #Removemos el anterior archivo
 	os.rename(os.getcwd()+'/Python3_SGE/datos/new.csv', os.getcwd()+'/Python3_SGE/datos/listaCompras.csv') #Cambiamos el nombre del nuevo archivo al nombre del anterior
+
+	return json.dumps(1);
+
+@app.route('/comprarCompra', methods=['POST'])
+def comprarCompra():
+
+	ridCompra = request.form['idCompra']
+	rproducto = request.form['sProductos']
+	rproveedor = request.form['sProveedor']
+	rcantidad = str(request.form['cantidadCP'])
+	rprecio = str(request.form['precioCP']) + "$"
+	rtotal = str(request.form['totalCP']) + "$"
+
+	result = []
+
+	with open(os.getcwd()+'/Python3_SGE/datos/listaHistoricoCompras.csv', 'r', encoding="ISO-8859-15") as inp, open(os.getcwd()+'/Python3_SGE/datos/new.csv', 'w', encoding="ISO-8859-15") as out:
+	
+			writer = csv.DictWriter(out, delimiter=";", quotechar=";",
+	    		fieldnames =("ID", "PRODUCTO", "PROVEEDOR", "CANTIDAD", "PRECIO", "TOTAL", "CONTROLES"), quoting=csv.QUOTE_MINIMAL)
+			
+			writer.writeheader()
+	
+			readercp = csv.DictReader(inp, delimiter=";") #Leer archivo viejo
+	
+			for rowcp in readercp:
+				result.append(rowcp) #Guardamos los datos del archivo viejo en una lista
+	
+			ID = 0
+			try:
+				ID = int((int(rowcp['ID'][-1]) + 1)) #Recogemos el id del ultimo elemento del archivo y le sumamos 1
+			except NameError:
+				ID = 1 #Si no hay ningun elemento en el archivo ponemos el id a 1
+	
+			producto = rproducto
+			proveedor = rproveedor
+			cantidad = rcantidad
+			precio = rprecio
+			total = rtotal
+			controles = '<button onclick="comprar({})" class="btn btn btn-outline-warning" type="button">Comprar</button><button onclick="borrar({})" class="btn btn btn-outline-danger mt-2" type="button">Borrar</button>'.format(ID, ID)
+			
+			data = {'ID': ID, 'PRODUCTO': producto, "PROVEEDOR": proveedor, "CANTIDAD": cantidad, "PRECIO": precio, "TOTAL": total, "CONTROLES": controles}
+			
+			result.append(data) #Añadimos el nuevo elemento a la lista
+			writer.writerows(result) #Añadimos los datos de la lista en el nuevo archivo
+	
+	os.remove(os.getcwd()+'/Python3_SGE/datos/listaHistoricoCompras.csv')
+	os.rename(os.getcwd()+'/Python3_SGE/datos/new.csv', os.getcwd()+'/Python3_SGE/datos/listaHistoricoCompras.csv')
+	
+	with open(os.getcwd()+'/Python3_SGE/datos/listaInventario.csv', 'r', encoding="ISO-8859-15") as inp, open(os.getcwd()+'/Python3_SGE/datos/new.csv', 'w', encoding="ISO-8859-15") as out:
+	
+			writer = csv.DictWriter(out, delimiter=";", quotechar=";",
+	    		fieldnames =("ID", "NOMBRE", "TIPO", "CANTIDAD", "PRECIO_COMPRA", "PRECIO_VENTA", "CONTROLES") , quoting=csv.QUOTE_MINIMAL)
+	
+			writer.writeheader()
+	
+			for rowacp in csv.DictReader(inp, delimiter=";"):
+	
+				if rowacp["ID"] == rproducto: #Cambiamos los datos del elemto seleccionado(id) a los nuevos datos
+					rowacp['CANTIDAD'] = int(rowacp['CANTIDAD']) + int(rcantidad)
+	
+				rowacp = {'ID': rowacp['ID'], 'NOMBRE': rowacp['NOMBRE'], 'TIPO': rowacp['TIPO'], 'CANTIDAD': rowacp['CANTIDAD'], 'PRECIO_COMPRA': rowacp['PRECIO_COMPRA'], 'PRECIO_VENTA': rowacp['PRECIO_VENTA'], 'CONTROLES': rowacp['CONTROLES']}
+				#Añadimos esos datos al rowacp
+				writer.writerow(rowacp) #Añadimos los datos el archivo
+	
+	os.remove(os.getcwd()+'/Python3_SGE/datos/listaInventario.csv')
+	os.rename(os.getcwd()+'/Python3_SGE/datos/new.csv', os.getcwd()+'/Python3_SGE/datos/listaInventario.csv')
+
+	
+	with open(os.getcwd()+'/Python3_SGE/datos/listaCompras.csv', 'r', encoding="ISO-8859-15") as inp, open(os.getcwd()+'/Python3_SGE/datos/new.csv', 'w', encoding="ISO-8859-15") as out:
+		
+		writer = csv.DictWriter(out, delimiter=";", quotechar=";",
+	   		fieldnames =("ID", "PRODUCTO", "PROVEEDOR", "CANTIDAD", "PRECIO", "TOTAL", "CONTROLES") , quoting=csv.QUOTE_MINIMAL)
+	
+		writer.writeheader() #Evitamos borrar los titulos (fieldnames)
+	
+		for rowbp in csv.DictReader(inp, delimiter=";"):
+			if rowbp["ID"] != ridCompra: #Creamos el nuevo archivo con todos los datos menos la fila con el id devuelto
+				writer.writerow(rowbp)
+	
+	os.remove(os.getcwd()+'/Python3_SGE/datos/listaCompras.csv') #Removemos el anterior archivo
+	os.rename(os.getcwd()+'/Python3_SGE/datos/new.csv', os.getcwd()+'/Python3_SGE/datos/listaCompras.csv')
 
 	return json.dumps(1);
 

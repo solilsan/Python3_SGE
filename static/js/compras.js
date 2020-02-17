@@ -221,7 +221,34 @@ $('#crearCompra').click(function() {
 
     });
 
-function borrar(data){
+function borrar(idC){
+
+  let data = { idCompra : idC, sProductos : idProducto, sProveedor : idProveedor, cantidadCP : $('#cantidadCP').val(), precioCP : $('#precioCP').val(), totalCP : $('#totalCP').val() }
+debugger
+    $.ajax({
+            url: '/comprarCompra',
+            data: data,
+            type: 'POST',
+            async:false,
+            success: function(response) {
+
+              table.destroy();
+              cargarDatos()
+
+            },
+            error: function(error) {
+
+                console.log(error);
+
+            }
+        });
+
+    return false
+
+}
+
+
+function comprar(data){
 
     $.ajax({
             url: '/borrarCompra',
