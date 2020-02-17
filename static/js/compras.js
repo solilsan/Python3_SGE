@@ -246,7 +246,7 @@ function borrar(data){
 }
 
 
-function comprar(data){
+function comprar(idC){
 
   let data = { idCompra : idC, sProductos : idProducto, sProveedor : idProveedor, cantidadCP : $('#cantidadCP').val(), precioCP : $('#precioCP').val(), totalCP : $('#totalCP').val() }
 debugger
