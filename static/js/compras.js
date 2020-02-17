@@ -221,13 +221,11 @@ $('#crearCompra').click(function() {
 
     });
 
-function borrar(idC){
+function borrar(data){
 
-  let data = { idCompra : idC, sProductos : idProducto, sProveedor : idProveedor, cantidadCP : $('#cantidadCP').val(), precioCP : $('#precioCP').val(), totalCP : $('#totalCP').val() }
-debugger
     $.ajax({
-            url: '/comprarCompra',
-            data: data,
+            url: '/borrarCompra',
+            data: { idCompra : data },
             type: 'POST',
             async:false,
             success: function(response) {
@@ -250,9 +248,12 @@ debugger
 
 function comprar(data){
 
+  let data = { idCompra : idC, sProductos : idProducto, sProveedor : idProveedor, cantidadCP : $('#cantidadCP').val(), precioCP : $('#precioCP').val(), totalCP : $('#totalCP').val() }
+debugger
+
     $.ajax({
-            url: '/borrarCompra',
-            data: { idCompra : data },
+            url: '/comprarCompra',
+            data: data,
             type: 'POST',
             async:false,
             success: function(response) {
