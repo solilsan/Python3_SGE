@@ -450,11 +450,23 @@ def borrarCompra():
 def comprarCompra():
 
 	ridCompra = request.form['idCompra']
-	rproducto = request.form['sProductos']
-	rproveedor = request.form['sProveedor']
-	rcantidad = str(request.form['cantidadCP'])
-	rprecio = str(request.form['precioCP']) + "$"
-	rtotal = str(request.form['totalCP']) + "$"
+
+	rproducto = ""
+	rproveedor = ""
+	rcantidad = ""
+	rprecio = ""
+	rtotal = ""
+
+	with open(os.getcwd()+'/Python3_SGE/datos/listaCompras.csv', 'r', encoding="ISO-8859-15") as inp:
+
+	for rowvp in csv.DictReader(inp, delimiter=";"):
+
+		if rowvp["ID"] == ridCompra:
+			rproducto = rowvp['PRODUCTO']
+			rproveedor = rowvp['PROVEEDOR']
+			rcantidad = rowvp['CANTIDAD']
+			rprecio = rowvp['PRECIO']
+			rtotal = rowvp['TOTAL']
 
 	result = []
 
