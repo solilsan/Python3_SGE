@@ -246,14 +246,11 @@ function borrar(data){
 }
 
 
-function comprar(idC){
-
-  let data = { idCompra : idC, sProductos : idProducto, sProveedor : idProveedor, cantidadCP : $('#cantidadCP').val(), precioCP : $('#precioCP').val(), totalCP : $('#totalCP').val() }
-debugger
+function comprar(data){
 
     $.ajax({
             url: '/comprarCompra',
-            data: data,
+            data: { idCompra : data },
             type: 'POST',
             async:false,
             success: function(response) {

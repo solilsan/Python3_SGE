@@ -459,14 +459,14 @@ def comprarCompra():
 
 	with open(os.getcwd()+'/Python3_SGE/datos/listaCompras.csv', 'r', encoding="ISO-8859-15") as inp:
 
-	for rowvp in csv.DictReader(inp, delimiter=";"):
-
-		if rowvp["ID"] == ridCompra:
-			rproducto = rowvp['PRODUCTO']
-			rproveedor = rowvp['PROVEEDOR']
-			rcantidad = rowvp['CANTIDAD']
-			rprecio = rowvp['PRECIO']
-			rtotal = rowvp['TOTAL']
+		for rowvp in csv.DictReader(inp, delimiter=";"):
+	
+			if rowvp["ID"] == ridCompra:
+				rproducto = rowvp['PRODUCTO']
+				rproveedor = rowvp['PROVEEDOR']
+				rcantidad = rowvp['CANTIDAD']
+				rprecio = rowvp['PRECIO']
+				rtotal = rowvp['TOTAL']
 
 	result = []
 
