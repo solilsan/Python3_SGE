@@ -572,6 +572,59 @@ def historicoCompras():
 	else:
 		return render_template('index.html')
 
+@app.route('/cargarHistorialCompras', methods=['POST'])
+def cargarHistorialCompras():
+
+	idProducto = 1
+
+	listaDatos = []
+	
+	cantidad = 0
+	
+	index = 0
+	
+	with open(os.getcwd()+'/Python3_SGE/datos/listaHistoricoCompras.csv', 'r', encoding="ISO-8859-15") as lc:
+	
+		readerlc = csv.reader(lc, delimiter=';', quotechar=';', quoting=csv.QUOTE_MINIMAL)
+	
+		next(readerlc)
+	
+		for rowlc in readerlc:
+	
+			if rowlc[1] == str(idProducto):
+	
+				datos = []
+		
+				if len(listaDatos) == 0:
+		
+					datos.append(rowlc[1])
+					datos.append(rowlc[3])
+					datos.append(rowlc[4])
+					datos.append(rowlc[5])
+					datos.append(rowlc[6][3:-5])
+		
+					listaDatos.append(datos)
+		
+				else:
+		
+					if listaDatos[index][0] == rowlc[1] and listaDatos[index][4] == rowlc[6][3:-5]:
+		
+						listaDatos[index][1] = str(int(listaDatos[index][1]) + int(rowlc[3]))
+		
+					else:
+		
+						datos.append(rowlc[1])
+						datos.append(rowlc[3])
+						datos.append(rowlc[4])
+						datos.append(rowlc[5])
+						datos.append(rowlc[6][3:-5])
+		
+						listaDatos.append(datos)
+		
+						index += 1
+
+	return json.dumps({'datos':listaDatos})
+
 #Inicio de la aplicación.
 if __name__ == "__main__":
     app.run()
