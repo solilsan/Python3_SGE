@@ -111,10 +111,10 @@ function cargarDatos(){
 					label: "",
 					data: data,
 					backgroundColor: [
-						'rgba(105, 0, 132, .2)',
+					'rgba(' + (Math.floor(Math.random() * 255) + 1) + ', ' + (Math.floor(Math.random() * 255) + 1) + ', ' + (Math.floor(Math.random() * 255) + 1) + ', .2)',
 					],
 					borderColor: [
-						'rgba(200, 99, 132, .7)',
+					'rgba(' + (Math.floor(Math.random() * 255) + 1) + ', ' + (Math.floor(Math.random() * 255) + 1) + ', ' + (Math.floor(Math.random() * 255) + 1) + ', .7)',
 					],
 					borderWidth: 2
 				}]
