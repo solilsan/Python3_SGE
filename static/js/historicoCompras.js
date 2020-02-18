@@ -13,84 +13,84 @@ function cargarDatos(){
 
         for (var i = 0; i < dataset.length; i++) {
         	debugger
-        	if (parseInt(dataSet[i][4]) == 1) {
+        	if (parseInt(dataset[i][4]) == 1) {
         		data.push(parseInt(dataset[i][1]))
         	}
         	else {
         		data.push(0)
         	}
 
-        	if (parseInt(dataSet[i][4]) == 2) {
+        	if (parseInt(dataset[i][4]) == 2) {
         		data.push(parseInt(dataset[i][1]))
         	}
         	else {
         		data.push(0)
         	}
 
-        	if (parseInt(dataSet[i][4]) == 3) {
+        	if (parseInt(dataset[i][4]) == 3) {
         		data.push(parseInt(dataset[i][1]))
         	}
         	else {
         		data.push(0)
         	}
 
-        	if (parseInt(dataSet[i][4]) == 4) {
+        	if (parseInt(dataset[i][4]) == 4) {
         		data.push(parseInt(dataset[i][1]))
         	}
         	else {
         		data.push(0)
         	}
 
-        	if (parseInt(dataSet[i][4]) == 5) {
+        	if (parseInt(dataset[i][4]) == 5) {
         		data.push(parseInt(dataset[i][1]))
         	}
         	else {
         		data.push(0)
         	}
 
-        	if (parseInt(dataSet[i][4]) == 6) {
+        	if (parseInt(dataset[i][4]) == 6) {
         		data.push(parseInt(dataset[i][1]))
         	}
         	else {
         		data.push(0)
         	}
 
-        	if (parseInt(dataSet[i][4]) == 7) {
+        	if (parseInt(dataset[i][4]) == 7) {
         		data.push(parseInt(dataset[i][1]))
         	}
         	else {
         		data.push(0)
         	}
 
-        	if (parseInt(dataSet[i][4]) == 8) {
+        	if (parseInt(dataset[i][4]) == 8) {
         		data.push(parseInt(dataset[i][1]))
         	}
         	else {
         		data.push(0)
         	}
 
-        	if (parseInt(dataSet[i][4]) == 9) {
+        	if (parseInt(dataset[i][4]) == 9) {
         		data.push(parseInt(dataset[i][1]))
         	}
         	else {
         		data.push(0)
         	}
 
-        	if (parseInt(dataSet[i][4]) == 10) {
+        	if (parseInt(dataset[i][4]) == 10) {
         		data.push(parseInt(dataset[i][1]))
         	}
         	else {
         		data.push(0)
         	}
 
-        	if (parseInt(dataSet[i][4]) == 11) {
+        	if (parseInt(dataset[i][4]) == 11) {
         		data.push(parseInt(dataset[i][1]))
         	}
         	else {
         		data.push(0)
         	}
 
-        	if (parseInt(dataSet[i][4]) == 11) {
+        	if (parseInt(dataset[i][4]) == 11) {
         		data.push(parseInt(dataset[i][1]))
         	}
         	else {
