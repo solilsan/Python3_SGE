@@ -9,8 +9,10 @@ function cargarDatos(){
 
         var dataSet = JSON.parse(response)['datos']
 
+        debugger
+
         var ctxL = document.getElementById("pieChart").getContext('2d');
-        
+
 		var myLineChart = new Chart(ctxL, {
 			type: 'line',
 			data: {
