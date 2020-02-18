@@ -9,6 +9,96 @@ function cargarDatos(){
 
         var dataSet = JSON.parse(response)['datos']
 
+        var data = []
+
+        for (var i = 0; i < dataset.lenght; i++) {
+
+        	if (partseInt(dataSet[i][4]) == 1) {
+        		data.push(parseInt(dataset[i][1]))
+        	}
+        	else {
+        		data.push(0)
+        	}
+
+        	if (partseInt(dataSet[i][4]) == 2) {
+        		data.push(parseInt(dataset[i][1]))
+        	}
+        	else {
+        		data.push(0)
+        	}
+
+        	if (partseInt(dataSet[i][4]) == 3) {
+        		data.push(parseInt(dataset[i][1]))
+        	}
+        	else {
+        		data.push(0)
+        	}
+
+        	if (partseInt(dataSet[i][4]) == 4) {
+        		data.push(parseInt(dataset[i][1]))
+        	}
+        	else {
+        		data.push(0)
+        	}
+
+        	if (partseInt(dataSet[i][4]) == 5) {
+        		data.push(parseInt(dataset[i][1]))
+        	}
+        	else {
+        		data.push(0)
+        	}
+
+        	if (partseInt(dataSet[i][4]) == 6) {
+        		data.push(parseInt(dataset[i][1]))
+        	}
+        	else {
+        		data.push(0)
+        	}
+
+        	if (partseInt(dataSet[i][4]) == 7) {
+        		data.push(parseInt(dataset[i][1]))
+        	}
+        	else {
+        		data.push(0)
+        	}
+
+        	if (partseInt(dataSet[i][4]) == 8) {
+        		data.push(parseInt(dataset[i][1]))
+        	}
+        	else {
+        		data.push(0)
+        	}
+
+        	if (partseInt(dataSet[i][4]) == 9) {
+        		data.push(parseInt(dataset[i][1]))
+        	}
+        	else {
+        		data.push(0)
+        	}
+
+        	if (partseInt(dataSet[i][4]) == 10) {
+        		data.push(parseInt(dataset[i][1]))
+        	}
+        	else {
+        		data.push(0)
+        	}
+
+        	if (partseInt(dataSet[i][4]) == 11) {
+        		data.push(parseInt(dataset[i][1]))
+        	}
+        	else {
+        		data.push(0)
+        	}
+
+        	if (partseInt(dataSet[i][4]) == 11) {
+        		data.push(parseInt(dataset[i][1]))
+        	}
+        	else {
+        		data.push(0)
+        	}
+
+        }
+
         debugger
 
         var ctxL = document.getElementById("pieChart").getContext('2d');
@@ -16,10 +106,10 @@ function cargarDatos(){
 		var myLineChart = new Chart(ctxL, {
 			type: 'line',
 			data: {
-				labels: ["January", "February", "March", "April", "May", "June", "July"],
+				labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiempre", "Octubre", "Noviembre", "Diciembre"],
 				datasets: [{
 					label: "My First dataset",
-					data: [65, 59, 80, 81, 56, 55, 40],
+					data: data,
 					backgroundColor: [
 						'rgba(105, 0, 132, .2)',
 					],
