@@ -10,12 +10,6 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>  
     <script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}"></script>
-
-    <script type="text/javascript" src="{{ url_for('static', filename='js/historicoCompra.js') }}"></script>
-
-    <style type="text/css">
-      body {background-color: red;}
-    </style>
     
 </head>
 <body class="elegant-color-dark">
@@ -65,7 +59,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonCompras">
                       <a class="dropdown-item" href="/compras.html">Crear</a>
                       <a class="dropdown-item" href="#">Proveedor</a>
-                      <a class="dropdown-item" href="/historicoCompras.html">Histórico</a>
+                      <a class="dropdown-item" href="/hCompras.html">Histórico</a>
                     </div>
                   </div>
 
@@ -98,6 +92,8 @@
       
       </footer>
       <!-- Footer -->
+
+      <script type="text/javascript" src="{{ url_for('static', filename='js/historicoCompra.js') }}"></script>
 
 </body>
 </html>
