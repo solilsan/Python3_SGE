@@ -14,84 +14,84 @@ function cargarDatos(){
         for (var i = 0; i < dataset.length; i++) {
         	debugger
         	if (parseInt(dataset[i][4]) == 1) {
-        		data.push(parseInt(dataset[i][1]))
+        		data.splice(0, 1, parseInt(dataset[i][1]))
         	}
         	else {
         		data.push(0)
         	}
 
         	if (parseInt(dataset[i][4]) == 2) {
-        		data.push(parseInt(dataset[i][1]))
+        		data.splice(1, 1, parseInt(dataset[i][1]))
         	}
         	else {
         		data.push(0)
         	}
 
         	if (parseInt(dataset[i][4]) == 3) {
-        		data.push(parseInt(dataset[i][1]))
+        		data.splice(2, 1, parseInt(dataset[i][1]))
         	}
         	else {
         		data.push(0)
         	}
 
         	if (parseInt(dataset[i][4]) == 4) {
-        		data.push(parseInt(dataset[i][1]))
+        		data.splice(3, 1, parseInt(dataset[i][1]))
         	}
         	else {
         		data.push(0)
         	}
 
         	if (parseInt(dataset[i][4]) == 5) {
-        		data.push(parseInt(dataset[i][1]))
+        		data.splice(4, 1, parseInt(dataset[i][1]))
         	}
         	else {
         		data.push(0)
         	}
 
         	if (parseInt(dataset[i][4]) == 6) {
-        		data.push(parseInt(dataset[i][1]))
+        		data.splice(5, 1, parseInt(dataset[i][1]))
         	}
         	else {
         		data.push(0)
         	}
 
         	if (parseInt(dataset[i][4]) == 7) {
-        		data.push(parseInt(dataset[i][1]))
+        		data.splice(6, 1, parseInt(dataset[i][1]))
         	}
         	else {
         		data.push(0)
         	}
 
         	if (parseInt(dataset[i][4]) == 8) {
-        		data.push(parseInt(dataset[i][1]))
+        		data.splice(7, 1, parseInt(dataset[i][1]))
         	}
         	else {
         		data.push(0)
         	}
 
         	if (parseInt(dataset[i][4]) == 9) {
-        		data.push(parseInt(dataset[i][1]))
+        		data.splice(8, 1, parseInt(dataset[i][1]))
         	}
         	else {
         		data.push(0)
         	}
 
         	if (parseInt(dataset[i][4]) == 10) {
-        		data.push(parseInt(dataset[i][1]))
+        		data.splice(9, 1, parseInt(dataset[i][1]))
         	}
         	else {
         		data.push(0)
         	}
 
         	if (parseInt(dataset[i][4]) == 11) {
-        		data.push(parseInt(dataset[i][1]))
+        		data.splice(10, 1, parseInt(dataset[i][1]))
         	}
         	else {
         		data.push(0)
         	}
 
         	if (parseInt(dataset[i][4]) == 11) {
-        		data.push(parseInt(dataset[i][1]))
+        		data.splice(11, 1, parseInt(dataset[i][1]))
         	}
         	else {
         		data.push(0)
