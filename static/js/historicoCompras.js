@@ -9,6 +9,8 @@ function cargarDatos(){
 
         var dataset = JSON.parse(response)['datos']
 
+        debugger
+
         var data = []
 
         for (var i = 0; i < dataset.length; i++) {
