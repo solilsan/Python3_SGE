@@ -1,5 +1,5 @@
 from flask import Flask, request, session, render_template
-import json, csv, os
+import json, csv, os, dateTime
 
 #iniciando app para la redirección de html.
 app = Flask(__name__)
@@ -457,6 +457,8 @@ def comprarCompra():
 	rprecio = ""
 	rtotal = ""
 
+	now = datetime.datetime.now()
+
 	with open(os.getcwd()+'/Python3_SGE/datos/listaCompras.csv', 'r', encoding="ISO-8859-15") as inp:
 
 		for rowvp in csv.DictReader(inp, delimiter=";"):
@@ -473,7 +475,7 @@ def comprarCompra():
 	with open(os.getcwd()+'/Python3_SGE/datos/listaHistoricoCompras.csv', 'r', encoding="ISO-8859-15") as inp, open(os.getcwd()+'/Python3_SGE/datos/new.csv', 'w', encoding="ISO-8859-15") as out:
 	
 			writer = csv.DictWriter(out, delimiter=";", quotechar=";",
-	    		fieldnames =("ID", "PRODUCTO", "PROVEEDOR", "CANTIDAD", "PRECIO", "TOTAL", "CONTROLES"), quoting=csv.QUOTE_MINIMAL)
+	    		fieldnames =("ID", "PRODUCTO", "PROVEEDOR", "CANTIDAD", "PRECIO", "TOTAL", "DATE"), quoting=csv.QUOTE_MINIMAL)
 			
 			writer.writeheader()
 	
@@ -493,9 +495,9 @@ def comprarCompra():
 			cantidad = rcantidad
 			precio = rprecio
 			total = rtotal
-			controles = '<button onclick="comprar({})" class="btn btn btn-outline-warning" type="button">Comprar</button><button onclick="borrar({})" class="btn btn btn-outline-danger mt-2" type="button">Borrar</button>'.format(ID, ID)
+			date = (str(now.day) + "/" + str(now.month) + "/" + str(now.year))
 			
-			data = {'ID': ID, 'PRODUCTO': producto, "PROVEEDOR": proveedor, "CANTIDAD": cantidad, "PRECIO": precio, "TOTAL": total, "CONTROLES": controles}
+			data = {'ID': ID, 'PRODUCTO': producto, "PROVEEDOR": proveedor, "CANTIDAD": cantidad, "PRECIO": precio, "TOTAL": total, "DATE": date}
 			
 			result.append(data) #Añadimos el nuevo elemento a la lista
 			writer.writerows(result) #Añadimos los datos de la lista en el nuevo archivo

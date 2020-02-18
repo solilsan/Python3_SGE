@@ -1,2 +1,2 @@
 ID;PRODUCTO;PROVEEDOR;CANTIDAD;PRECIO;TOTAL;CONTROLES
-1;Queso;1;10;1.8$;18$;<button onclick="comprar(1)" class="btn btn btn-outline-warning" type="button">Comprar</button><button onclick="borrar(1)" class="btn btn btn-outline-danger mt-2" type="button">Borrar</button>
+1;1;1;10;1.8$;18$;<button onclick="comprar(1)" class="btn btn btn-outline-warning" type="button">Comprar</button><button onclick="borrar(1)" class="btn btn btn-outline-danger mt-2" type="button">Borrar</button>
