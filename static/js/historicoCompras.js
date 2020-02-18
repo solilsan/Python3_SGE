@@ -7,7 +7,7 @@ function cargarDatos(){
       async:false,
       success: function(response) {
 
-        var dataSet = JSON.parse(response)['datos']
+        var dataset = JSON.parse(response)['datos']
 
         var data = []
 
