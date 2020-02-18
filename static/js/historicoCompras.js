@@ -12,7 +12,7 @@ function cargarDatos(){
         var data = []
 
         for (var i = 0; i < dataset.length; i++) {
-        	debugger
+
         	if (parseInt(dataset[i][4]) == 1) {
         		data.splice(0, 1, parseInt(dataset[i][1]))
         	}
@@ -98,8 +98,6 @@ function cargarDatos(){
         	}
 
         }
-
-        debugger
 
         var ctxL = document.getElementById("pieChart").getContext('2d');
 
