@@ -108,7 +108,7 @@ function cargarDatos(){
 			data: {
 				labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiempre", "Octubre", "Noviembre", "Diciembre"],
 				datasets: [{
-					label: "My First dataset",
+					label: "",
 					data: data,
 					backgroundColor: [
 						'rgba(105, 0, 132, .2)',
@@ -120,7 +120,17 @@ function cargarDatos(){
 				}]
 			},
 			options: {
-				responsive: true
+				responsive: true,
+				legend: {
+   				    display: false
+   				},
+   				tooltips: {
+   				    callbacks: {
+   				       label: function(tooltipItem) {
+   				              return tooltipItem.yLabel;
+   				       }
+   				    }
+   				}
 			}
 		});
 
