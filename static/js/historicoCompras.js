@@ -12,7 +12,7 @@ function cargarDatos(){
         var data = []
 
         for (var i = 0; i < dataset.lenght; i++) {
-
+        	debugger
         	if (partseInt(dataSet[i][4]) == 1) {
         		data.push(parseInt(dataset[i][1]))
         	}
