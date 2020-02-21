@@ -128,7 +128,7 @@ cargarDatos()
 
 $('#siguiente').click(function() {
 
-	if (i == dataLength) {
+	if (i == (dataLength - 1)) {
 
 		$("#siguiente").attr("disabled", true);
 
