@@ -117,7 +117,7 @@ function cargarDatos(){
 
 		var data = []
 		
-		for (var i = 0; i < dataset.length: i++) {
+		for (var i = 0; i < dataset.length; i++) {
 		
 			data = []
 		
