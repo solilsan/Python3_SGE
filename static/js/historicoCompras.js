@@ -133,6 +133,17 @@ function cargarDatos(){
 
 	}
 
+	if (i > 0) {
+
+		$("#anterior").attr("disabled", false);
+
+	}
+	else {
+
+		$("#anterior").attr("disabled", true);
+
+	}
+
   }
 
 cargarDatos()
@@ -140,6 +151,14 @@ cargarDatos()
 $('#siguiente').click(function() {
 
 	i += 1
+
+	cargarDatos()
+
+});
+
+$('#anterior').click(function() {
+
+	i -= 1
 
 	cargarDatos()
 
