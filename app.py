@@ -575,6 +575,8 @@ def historicoCompras():
 @app.route('/cargarHistorialCompras', methods=['POST'])
 def cargarHistorialCompras():
 
+	idProducto = 1
+
 	listaDatos = []
 	
 	cantidad = 0
@@ -589,35 +591,37 @@ def cargarHistorialCompras():
 	
 		for rowlc in readerlc:
 	
-			datos = []
+			if rowlc[1] == str(idProducto):
 	
-			if len(listaDatos) == 0:
-	
-				datos.append(rowlc[1])
-				datos.append(rowlc[3])
-				datos.append(rowlc[4])
-				datos.append(rowlc[5])
-				datos.append(rowlc[6][3:-5])
-	
-				listaDatos.append(datos)
-	
-			else:
-	
-				if listaDatos[index][0] == rowlc[1] and listaDatos[index][4] == rowlc[6][3:-5]:
-	
-					listaDatos[index][1] = str(int(listaDatos[index][1]) + int(rowlc[3]))
-	
-				else:
-	
+				datos = []
+		
+				if len(listaDatos) == 0:
+		
 					datos.append(rowlc[1])
 					datos.append(rowlc[3])
 					datos.append(rowlc[4])
 					datos.append(rowlc[5])
 					datos.append(rowlc[6][3:-5])
-	
+		
 					listaDatos.append(datos)
-	
-					index += 1
+		
+				else:
+		
+					if listaDatos[index][0] == rowlc[1] and listaDatos[index][4] == rowlc[6][3:-5]:
+		
+						listaDatos[index][1] = str(int(listaDatos[index][1]) + int(rowlc[3]))
+		
+					else:
+		
+						datos.append(rowlc[1])
+						datos.append(rowlc[3])
+						datos.append(rowlc[4])
+						datos.append(rowlc[5])
+						datos.append(rowlc[6][3:-5])
+		
+						listaDatos.append(datos)
+		
+						index += 1
 
 	return json.dumps({'datos':listaDatos})
 
