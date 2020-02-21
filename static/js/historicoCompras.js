@@ -1,4 +1,6 @@
 
+var i = 0
+
 function cargarDatos(){
 
     $.ajax({
@@ -12,8 +14,6 @@ function cargarDatos(){
         debugger
 
         var data = []
-
-        for (var i = 0; i < dataset.length; i++) {
 
         	if (parseInt(dataset[i][4]) == 1) {
         		data.splice(0, 1, parseInt(dataset[i][1]))
@@ -99,8 +99,6 @@ function cargarDatos(){
         		data.push(0)
         	}
 
-        }
-
         var ctxL = document.getElementById("pieChart").getContext('2d');
 
 		var myLineChart = new Chart(ctxL, {
@@ -135,3 +133,11 @@ function cargarDatos(){
   }
 
 cargarDatos()
+
+$('#siguiente').click(function() {
+
+	i += 1
+
+	cargarDatos()
+
+});
