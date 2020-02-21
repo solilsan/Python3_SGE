@@ -196,7 +196,7 @@ function cargarDatos(){
 		
 			dataE = {
 		
-				label: "",
+				label: ""+i+"",
 				data: data,
 				backgroundColor: [
 				'rgba(' + (Math.floor(Math.random() * 255) + 1) + ', ' + (Math.floor(Math.random() * 255) + 1) + ', ' + (Math.floor(Math.random() * 255) + 1) + ', .2)',
