@@ -108,7 +108,7 @@ function cargarDatos(){
 			data: {
 				labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiempre", "Octubre", "Noviembre", "Diciembre"],
 				datasets: [{
-					label: "",
+					label: "Queso",
 					data: data,
 					backgroundColor: [
 					'rgba(' + (Math.floor(Math.random() * 255) + 1) + ', ' + (Math.floor(Math.random() * 255) + 1) + ', ' + (Math.floor(Math.random() * 255) + 1) + ', .2)',
@@ -120,17 +120,7 @@ function cargarDatos(){
 				}]
 			},
 			options: {
-				responsive: true,
-				legend: {
-   				    display: false
-   				},
-   				tooltips: {
-   				    callbacks: {
-   				       label: function(tooltipItem) {
-   				              return tooltipItem.yLabel;
-   				       }
-   				    }
-   				}
+				responsive: true
 			}
 		});
 
