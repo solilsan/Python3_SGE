@@ -122,13 +122,7 @@ function cargarDatos(){
       }
     });
 
-  }
-
-cargarDatos()
-
-$('#siguiente').click(function() {
-
-	if (i == (dataLength - 1)) {
+    if (i == (dataLength - 1)) {
 
 		$("#siguiente").attr("disabled", true);
 
@@ -137,10 +131,16 @@ $('#siguiente').click(function() {
 
 		$("#siguiente").attr("disabled", false);
 
-		i += 1
-
-		cargarDatos()
-
 	}
+
+  }
+
+cargarDatos()
+
+$('#siguiente').click(function() {
+
+	i += 1
+
+	cargarDatos()
 
 });
