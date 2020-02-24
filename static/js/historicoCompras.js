@@ -92,7 +92,7 @@ function cargarDatos(){
 		
 			dataE = {
 		
-				label: ""+i+"",
+				label: ""+dataset[i][5]+"",
 				data: data,
 				backgroundColor: [
 				'rgba(' + (Math.floor(Math.random() * 255) + 1) + ', ' + (Math.floor(Math.random() * 255) + 1) + ', ' + (Math.floor(Math.random() * 255) + 1) + ', .2)',
