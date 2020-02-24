@@ -505,7 +505,7 @@ def comprarCompra():
 			precio = rprecio
 			total = rtotal
 			date = (str(now.day) + "/" + str(now.month) + "/" + str(now.year))
-			nombrep = rproductoNombre
+			nombrep = rproductoNombre.capitalize()
 			
 			data = {'ID': ID, 'PRODUCTO': producto, "PROVEEDOR": proveedor, "CANTIDAD": cantidad, "PRECIO": precio, "TOTAL": total, "DATE": date, "NOMBREP": nombrep}
 			
@@ -610,6 +610,7 @@ def cargarHistorialCompras():
 				datos.append(rowlc[4])
 				datos.append(rowlc[5])
 				datos.append(rowlc[6][3:-5])
+				datos.append(rowlc[7])
 	
 				listaDatos.append(datos)
 	
@@ -626,6 +627,7 @@ def cargarHistorialCompras():
 					datos.append(rowlc[4])
 					datos.append(rowlc[5])
 					datos.append(rowlc[6][3:-5])
+					datos.append(rowlc[7])
 	
 					listaDatos.append(datos)
 	
