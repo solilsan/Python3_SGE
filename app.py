@@ -457,6 +457,8 @@ def comprarCompra():
 	rprecio = ""
 	rtotal = ""
 
+	rproductoNombre = ""
+
 	now = datetime.datetime.now()
 
 	with open(os.getcwd()+'/Python3_SGE/datos/listaCompras.csv', 'r', encoding="ISO-8859-15") as inp:
@@ -470,12 +472,19 @@ def comprarCompra():
 				rprecio = rowvp['PRECIO']
 				rtotal = rowvp['TOTAL']
 
+	with open(os.getcwd()+'/Python3_SGE/datos/listaInventario.csv', 'r', encoding="ISO-8859-15") as inp:
+
+		for rowvp in csv.DictReader(inp, delimiter=";"):
+	
+			if rowvp["ID"] == ridCompra:
+				rproductoNombre = rowvp['NOMBRE']
+
 	result = []
 
 	with open(os.getcwd()+'/Python3_SGE/datos/listaHistoricoCompras.csv', 'r', encoding="ISO-8859-15") as inp, open(os.getcwd()+'/Python3_SGE/datos/new.csv', 'w', encoding="ISO-8859-15") as out:
 	
 			writer = csv.DictWriter(out, delimiter=";", quotechar=";",
-	    		fieldnames =("ID", "PRODUCTO", "PROVEEDOR", "CANTIDAD", "PRECIO", "TOTAL", "DATE"), quoting=csv.QUOTE_MINIMAL)
+	    		fieldnames =("ID", "PRODUCTO", "PROVEEDOR", "CANTIDAD", "PRECIO", "TOTAL", "DATE", "NOMBREP"), quoting=csv.QUOTE_MINIMAL)
 			
 			writer.writeheader()
 	
@@ -496,8 +505,9 @@ def comprarCompra():
 			precio = rprecio
 			total = rtotal
 			date = (str(now.day) + "/" + str(now.month) + "/" + str(now.year))
+			nombrep = rproductoNombre
 			
-			data = {'ID': ID, 'PRODUCTO': producto, "PROVEEDOR": proveedor, "CANTIDAD": cantidad, "PRECIO": precio, "TOTAL": total, "DATE": date}
+			data = {'ID': ID, 'PRODUCTO': producto, "PROVEEDOR": proveedor, "CANTIDAD": cantidad, "PRECIO": precio, "TOTAL": total, "DATE": date, "NOMBREP": nombrep}
 			
 			result.append(data) #Añadimos el nuevo elemento a la lista
 			writer.writerows(result) #Añadimos los datos de la lista en el nuevo archivo
