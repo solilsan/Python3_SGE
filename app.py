@@ -476,7 +476,7 @@ def comprarCompra():
 
 		for rowvp in csv.DictReader(inp, delimiter=";"):
 	
-			if rowvp["ID"] == ridCompra:
+			if rowvp["ID"] == rproducto:
 				rproductoNombre = rowvp['NOMBRE']
 
 	result = []
