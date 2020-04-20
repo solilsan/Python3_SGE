@@ -655,7 +655,7 @@ def proveedor():
 								valido = True
 
 			if valido:
-				return render_template('historicoCompras.html')
+				return render_template('proveedor.html')
 
 			else:
 				return render_template('inicio.html')
