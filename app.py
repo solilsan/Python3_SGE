@@ -694,6 +694,45 @@ def cargarProveedores():
 
 	return json.dumps({'datos':listaDatos})
 
+@app.route('/crearProveedor', methods=['POST'])
+def crearProveedor():
+
+	result = []
+
+	with open(os.getcwd()+'/Python3_SGE/datos/listaProveedors.csv', 'r', encoding="ISO-8859-15") as inp, open(os.getcwd()+'/Python3_SGE/datos/new.csv', 'w', encoding="ISO-8859-15") as out:
+
+			writer = csv.DictWriter(out, dialect='unix', delimiter=";", quotechar=";",
+	    		fieldnames =("ID", "NOMBRE", "DIRECCION", "TELEFONO", "CONTROLES"), quoting=csv.QUOTE_MINIMAL)
+
+			writer.writeheader()
+
+			readercp = csv.DictReader(inp, dialect='unix', delimiter=";") #Leer archivo viejo
+
+			for rowcp in readercp:
+				result.append(rowcp) #Guardamos los datos del archivo viejo en una lista
+
+			ID = 0
+			try:
+				ID = int((int(rowcp['ID'][-1]) + 1)) #Recogemos el id del ultimo elemento del archivo y le sumamos 1
+			except NameError:
+				ID = 1 #Si no hay ningun elemento en el archivo ponemos el id a 1
+
+			nombre = request.form['nombreP']
+			direccion = request.form['tipoP']
+			telefono = request.form['contidadP']
+
+			controles = '<button onclick="modificar({})" class="btn btn btn-outline-warning" type="button">Modificar</button><button onclick="borrar({})" class="btn btn btn-outline-danger mt-2" type="button">Borrar</button>'.format(ID, ID)
+
+			data = {'ID': ID, 'NOMBRE': nombre, "DIRECCION": direccion, "TELEFONO": telefono, "CONTROLES": controles}
+
+			result.append(data) #Añadimos el nuevo elemento a la lista
+			writer.writerows(result) #Añadimos los datos de la lista en el nuevo archivo
+
+	os.remove(os.getcwd()+'/Python3_SGE/datos/listaProveedors.csv')
+	os.rename(os.getcwd()+'/Python3_SGE/datos/new.csv', os.getcwd()+'/Python3_SGE/datos/listaProveedors.csv')
+
+	return json.dumps(1);
+
 #Inicio de la aplicación.
 if __name__ == "__main__":
     app.run()

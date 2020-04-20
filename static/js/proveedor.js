@@ -47,3 +47,51 @@ function cargarDatos(){
   } 
 
 cargarDatos()
+
+function validarC(){
+
+  let valido = true
+
+  if ($('#nombreProveedor').val() == ""){
+
+    valido = false
+  }
+
+  return valido
+
+}
+
+$('#crearProveedor').click(function() {
+
+  if (validarC()){
+
+      $('#modalCrearProveedor').modal('hide');
+
+        $.ajax({
+            url: '/crearProveedor',
+            data: $('#crearProveedorForm').serialize(),
+            type: 'POST',
+            async:false,
+            success: function(response) {
+
+              table.destroy();
+              cargarDatos()
+
+            },
+            error: function(error) {
+
+                console.log(error);
+
+            }
+        });
+
+        return false
+
+      }
+      else {
+
+        return false
+
+      }
+
+    });
