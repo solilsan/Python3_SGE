@@ -666,6 +666,34 @@ def proveedor():
 	else:
 		return render_template('index.html')
 
+@app.route('/cargarProveedores', methods=['POST'])
+def cargarProveedores():
+
+	listaDatos = []
+
+	with open(os.getcwd()+'/Python3_SGE/datos/listaProveedors.csv', 'r', encoding="ISO-8859-15") as lc:
+
+		readerlc = csv.reader(lc, delimiter=';', quotechar=';',
+	                       quoting=csv.QUOTE_MINIMAL)
+
+		next(readerlc)
+
+		index = 0 #Cantidad de elementos que tiene el archivo listaCompra.csv
+		borrarP = 2 #Posicion en la que borrar el id del proveedor
+		borrarI = 1 #Posicion en la que borrar el id del invenario
+
+		for rowlc in readerlc:
+
+			datos = []
+
+			for i in rowlc:
+
+				datos.append(i)
+
+			listaDatos.append(datos)
+
+	return json.dumps({'datos':listaDatos})
+
 #Inicio de la aplicación.
 if __name__ == "__main__":
     app.run()

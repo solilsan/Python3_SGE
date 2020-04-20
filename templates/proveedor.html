@@ -98,9 +98,11 @@
 			    </div>
 
         	<table id="dt-select" class="table table-striped table-bordered text-center" cellspacing="0" width="100%">
+
   				<div id="div_carga" class="text-center">
             <img id="cargador" src="{{ url_for('static', filename='img/ajax-loader.gif') }}"/>
           </div>
+
 			    </table>
 
 		    </div>
@@ -126,10 +128,18 @@
                   <input type="text" id="nombreProveedor" name="nombreProveedor" class="form-control validate" placeholder="Nombre Proveedor">
                 </div>
 
+                <div class="md-form mb-5">
+                  <input type="text" id="calleProveedor" name="calleProveedor" class="form-control validate" placeholder="Calle Proveedor">
+                </div>
+
+                <div class="md-form mb-5">
+                  <input type="text" id="telefonoProveedor" name="telefonoProveedor" class="form-control validate" placeholder="Teléfono Proveedor">
+                </div>
+
               </div>
 
               <div class="modal-footer d-flex justify-content-center">
-                <button id="crearCompra" class="btn btn btn-outline-primary my-2 my-sm-0">Crear</button>
+                <button id="crearProveedor" class="btn btn btn-outline-primary my-2 my-sm-0">Crear</button>
               </div>
 
             </form>
@@ -154,6 +164,6 @@
 
 </body>
 
-<script src="{{ url_for('static', filename='js/') }}"></script>
+<script src="{{ url_for('static', filename='js/proveedor.js') }}"></script>
 
 </html>
