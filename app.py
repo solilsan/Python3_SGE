@@ -733,6 +733,11 @@ def crearProveedor():
 
 	return json.dumps(1);
 
+@app.route('/newProveedor', methods=['POST'])
+def newProveedor():
+
+	return json.dumps(1);
+
 #Inicio de la aplicación.
 if __name__ == "__main__":
     app.run()
