@@ -8,7 +8,7 @@ app.secret_key = 'esto-es-una-clave-muy-secreta' #encriptar session.
 
 @app.errorhandler(404)
 def page_not_found(e):
-
+#hola
     if 'loginC' in session:
     	if session['loginC']:
     		return render_template('inicio.html')
