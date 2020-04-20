@@ -694,7 +694,7 @@ def cargarProveedores():
 
 	return json.dumps({'datos':listaDatos})
 
-@app.route('/crearProveedor', methods=['POST'])
+@app.route('/newProveedor', methods=['POST'])
 def crearProveedor():
 
 	result = []
@@ -730,11 +730,6 @@ def crearProveedor():
 
 	os.remove(os.getcwd()+'/Python3_SGE/datos/listaProveedors.csv')
 	os.rename(os.getcwd()+'/Python3_SGE/datos/new.csv', os.getcwd()+'/Python3_SGE/datos/listaProveedors.csv')
-
-	return json.dumps(1);
-
-@app.route('/newProveedor', methods=['POST'])
-def newProveedor():
 
 	return json.dumps(1);
 
