@@ -64,7 +64,7 @@ function validarC(){
 $('#crearProveedor').click(function() {
 
   if (validarC()){
-
+debugger
       $('#modalCrearProveedor').modal('hide');
 
         $.ajax({
