@@ -717,9 +717,9 @@ def crearProveedor():
 			except NameError:
 				ID = 1 #Si no hay ningun elemento en el archivo ponemos el id a 1
 
-			nombre = request.form['nombreP']
-			direccion = request.form['tipoP']
-			telefono = request.form['contidadP']
+			nombre = request.form['nombreProveedor']
+			direccion = request.form['calleProveedor']
+			telefono = request.form['telefonoProveedor']
 
 			controles = '<button onclick="modificar({})" class="btn btn btn-outline-warning" type="button">Modificar</button><button onclick="borrar({})" class="btn btn btn-outline-danger mt-2" type="button">Borrar</button>'.format(ID, ID)
 
