@@ -68,7 +68,7 @@ $('#crearProveedor').click(function() {
       $('#modalCrearProveedor').modal('hide');
 
         $.ajax({
-            url: '/crearProveedor',
+            url: '/crearP',
             data: $('#crearProveedorForm').serialize(),
             type: 'POST',
             async:false,

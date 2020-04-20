@@ -694,7 +694,7 @@ def cargarProveedores():
 
 	return json.dumps({'datos':listaDatos})
 
-@app.route('/crearProveedor', methods=['POST'])
+@app.route('/crearP', methods=['POST'])
 def crearProveedor():
 
 	result = []
