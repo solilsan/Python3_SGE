@@ -47,7 +47,6 @@
                     <button class="btn btn-outline-info dropdown-toggle menuB" type="button" id="dropdownMenuButtonInventario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Inventario</button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonInventario">
                       <a class="dropdown-item" href="/inventario.html">Crear</a>
-                      <a class="dropdown-item" href="#">Another action</a>
                     </div>
                   </div>
 
@@ -59,7 +58,7 @@
                     <button class="btn btn-outline-info dropdown-toggle menuB" type="button" id="dropdownMenuButtonVentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ventas</button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonVentas">
                       <a class="dropdown-item" href="#">Crear</a>
-                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Clientes</a>
                     </div>
                   </div>
 
@@ -94,7 +93,7 @@
 
           <div class="text-center">
 
-  				  <button id="botonCrearCompra" class="btn btn btn-outline-primary my-2 my-sm-0" type="button" data-toggle="modal" data-target="#modalCrearCompra">Crear</button>
+  				  <button id="botonCrearProveedor" class="btn btn btn-outline-primary my-2 my-sm-0" type="button" data-toggle="modal" data-target="#modalCrearProveedor">Crear</button>
 
 			    </div>
 
@@ -108,12 +107,12 @@
 
   </div>
 
-        <div class="modal fade" id="modalCrearCompra" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        <div class="modal fade" id="modalCrearProveedor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content unique-color-dark text-white">
               <div class="modal-header text-center">
-                <h4 class="modal-title w-100 font-weight-bold">Crear Compra</h4>
+                <h4 class="modal-title w-100 font-weight-bold">Crear Proveedor</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -123,34 +122,8 @@
 
               <div class="modal-body mx-3">
 
-                <div class="md-form mb-5 row">
-
-                  <p class="col-2 pt-2">Producto:</p>
-                  
-                  <select id="sProductos" class="browser-default custom-select col-9 pSelect">
-                  </select>
-
-                </div>
-
-                <div class="md-form mb-5 row">
-
-                  <p class="col-2 pt-2">Proveedor:</p>
-                  
-                  <select id="sProveedor" class="browser-default custom-select col-9 pSelect">
-                  </select>
-
-                </div>
-
                 <div class="md-form mb-5">
-                  <input type="number" id="cantidadCP" name="cantidad" class="form-control validate" placeholder="Cantidad">
-                </div>
-
-                <div class="md-form mb-5">
-                  <input type="number" id="precioCP" step="0.01" name="precio" class="form-control validate disabled" placeholder="Precio">
-                </div>
-
-                <div class="md-form mb-5">
-                  <input type="number" id="totalCP" step="0.01" name="total" class="form-control validate disabled" placeholder="Total">
+                  <input type="text" id="nombreProveedor" name="nombreProveedor" class="form-control validate" placeholder="Nombre Proveedor">
                 </div>
 
               </div>
