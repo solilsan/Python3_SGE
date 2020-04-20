@@ -635,6 +635,37 @@ def cargarHistorialCompras():
 
 	return json.dumps({'datos':listaDatos})
 
+@app.route('/proveedor.html')
+def proveedor():
+	if 'loginC' in session:
+
+		if session['loginC']:
+
+			valido = False
+
+			with open(os.getcwd()+'/Python3_SGE/datos/listaDepartamentos.csv', 'r', encoding="ISO-8859-15") as File:
+
+				reader = csv.reader(File, delimiter=';', quotechar=';',
+                        quoting=csv.QUOTE_MINIMAL)
+
+				for row in reader: #Comprobamos si el usuario logueado tiene permisos para usar este modulo
+					if row[0] == "1":
+						for i in row[2]:
+							if i == session['idUser']:
+								valido = True
+
+			if valido:
+				return render_template('historicoCompras.html')
+
+			else:
+				return render_template('inicio.html')
+
+		else:
+			return render_template('index.html')
+
+	else:
+		return render_template('index.html')
+
 #Inicio de la aplicación.
 if __name__ == "__main__":
     app.run()
