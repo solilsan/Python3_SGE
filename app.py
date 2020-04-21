@@ -749,7 +749,7 @@ def borrarProveedor():
 			if rowbp["ID"] != idProveedor: #Creamos el nuevo archivo con todos los datos menos la fila con el id devuelto
 				writer.writerow(rowbp)
 
-	os.remove(os.getcwd()+'/Python3_SGE/datos/listaInventario.csv') #Removemos el anterior archivo
+	os.remove(os.getcwd()+'/Python3_SGE/datos/listaProveedors.csv') #Removemos el anterior archivo
 	os.rename(os.getcwd()+'/Python3_SGE/datos/new.csv', os.getcwd()+'/Python3_SGE/datos/listaProveedors.csv') #Cambiamos el nombre del nuevo archivo al nombre del anterior
 
 	return json.dumps(1);

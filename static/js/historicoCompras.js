@@ -89,8 +89,6 @@ function cargarDatos(){
 		    else {
 		    	data.push(0)
 		    }
-
-		    debugger
 		
 			dataE = {
 		
