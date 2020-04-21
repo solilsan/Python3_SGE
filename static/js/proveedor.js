@@ -131,9 +131,9 @@ function modificar(data){
               datos = JSON.parse(response)['datos']
 debugger
               $('#idProveedor').val(datos[0]);
-              $('#nombreProveedor').val(datos[1]);
-              $('#calleProveedor').val(datos[2]);
-              $('#telefonoProveedor').val(parseInt(datos[3]));
+              $('#nProveedor').val(datos[1]);
+              $('#cProveedor').val(datos[2]);
+              $('#tProveedor').val(parseInt(datos[3]));
 
               $('#modalVerProveedor').modal('show');
 
