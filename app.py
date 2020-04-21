@@ -773,6 +773,35 @@ def verProveedor():
 
 	return json.dumps({'datos':datosP}) #Devolvemos los datos en forma json
 
+@app.route('/actualizarProveedor', methods=['POST'])
+def actualizarProveedor():
+
+	precioCompra = request.form['precioCompraAP']
+	precioVenta = request.form['precioVentaAP']
+
+	with open(os.getcwd()+'/Python3_SGE/datos/listaProveedors.csv', 'r', encoding="ISO-8859-15") as inp, open(os.getcwd()+'/Python3_SGE/datos/new.csv', 'w', encoding="ISO-8859-15") as out:
+
+		writer = csv.DictWriter(out, dialect='unix', delimiter=";", quotechar=";",
+    		fieldnames =("ID", "NOMBRE", "DIRECCION", "TELEFONO", "CONTROLES") , quoting=csv.QUOTE_MINIMAL)
+
+		writer.writeheader()
+
+		for rowacp in csv.DictReader(inp, dialect='unix', delimiter=";"):
+
+			if rowacp["ID"] == request.form['idProveedor']: #Cambiamos los datos del elemto seleccionado(id) a los nuevos datos
+				rowacp['NOMBRE'] = request.form['nProveedor']
+				rowacp['DIRECCION'] = request.form['cProveedor']
+				rowacp['TELEFONO'] = request.form['tProveedor']
+
+			rowacp = {'ID': rowacp['ID'], 'NOMBRE': rowacp['NOMBRE'], 'DIRECCION': rowacp['DIRECCION'], 'TELEFONO': rowacp['TELEFONO'], 'CONTROLES': rowacp['CONTROLES']}
+			#Añadimos esos datos al rowacp
+			writer.writerow(rowacp) #Añadimos los datos el archivo
+
+	os.remove(os.getcwd()+'/Python3_SGE/datos/listaProveedors.csv')
+	os.rename(os.getcwd()+'/Python3_SGE/datos/new.csv', os.getcwd()+'/Python3_SGE/datos/listaProveedors.csv')
+
+	return json.dumps(1);
+
 #Inicio de la aplicación.
 if __name__ == "__main__":
     app.run()

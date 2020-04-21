@@ -129,7 +129,7 @@ function modificar(data){
             success: function(response) {
 
               datos = JSON.parse(response)['datos']
-debugger
+
               $('#idProveedor').val(datos[0]);
               $('#nProveedor').val(datos[1]);
               $('#cProveedor').val(datos[2]);
@@ -146,3 +146,36 @@ debugger
         });
 
 }
+
+$('#actualizarProveedor').click(function() {
+
+    if (validarA()){
+
+        $('#modalVerProveedor').modal('hide');
+
+        $.ajax({
+            url: '/actualizarProveedor',
+            data: $('#actualizarProveedorForm').serialize(),
+            type: 'POST',
+            async:false,
+            success: function(response) {
+
+              table.destroy();
+              cargarDatos()
+
+            },
+            error: function(error) {
+
+                console.log(error);
+
+            }
+        });
+
+        return false
+
+      }
+      else {
+        return false
+      }
+
+    });
