@@ -129,7 +129,7 @@ function modificar(data){
             success: function(response) {
 
               datos = JSON.parse(response)['datos']
-
+debugger
               $('#idProveedor').val(datos[0]);
               $('#nombreProveedor').val(datos[1]);
               $('#calleProveedor').val(datos[2]);
