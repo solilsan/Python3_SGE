@@ -754,6 +754,25 @@ def borrarProveedor():
 
 	return json.dumps(1);
 
+@app.route('/verProveedor', methods=['POST'])
+def verProveedor():
+
+	idProveedor = request.form['idProveedor']
+
+	datosP = []
+
+	with open(os.getcwd()+'/Python3_SGE/datos/listaProveedors.csv', 'r', encoding="ISO-8859-15") as inp:
+
+		for rowvp in csv.DictReader(inp, dialect='unix', delimiter=";"):
+
+			if rowvp["ID"] == idInventario: #Añadimos los datos del elemento seleccionado(id) a la lista
+				datosP.append(rowvp['ID'])
+				datosP.append(rowvp['NOMBRE'])
+				datosP.append(rowvp['DIRECCION'])
+				datosP.append(rowvp['TELEFONO'])
+
+	return json.dumps({'datos':datosP}) #Devolvemos los datos en forma json
+
 #Inicio de la aplicación.
 if __name__ == "__main__":
     app.run()

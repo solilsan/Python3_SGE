@@ -150,6 +150,49 @@
 
      </div>
 
+     <div class="modal fade" id="modalVerProveedor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content unique-color-dark text-white">
+              <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Modificar Proveedor</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <form id="actualizarProveedorForm" class="text-center" role="form">
+
+              <div class="modal-body mx-3">
+
+                <div class="md-form mb-5 d-none">
+                  <input type="text" id="idProveedor" name="idAP" class="d-none">
+                </div>
+
+                <div class="md-form mb-5">
+                  <input type="text" id="nombreProveedor" name="nombreProveedor" class="form-control validate" placeholder="Nombre Proveedor">
+                </div>
+
+                <div class="md-form mb-5">
+                  <input type="text" id="calleProveedor" name="calleProveedor" class="form-control validate" placeholder="Calle Proveedor">
+                </div>
+
+                <div class="md-form mb-5">
+                  <input type="number" id="telefonoProveedor" name="telefonoProveedor" class="form-control validate" placeholder="Teléfono Proveedor">
+                </div>
+
+              </div>
+              <div class="modal-footer d-flex justify-content-center">
+                <button id="actualizarProveedor" class="btn btn btn-outline-primary my-2 my-sm-0">Guardar</button>
+              </div>
+
+            </form>
+
+            </div>
+          </div>
+        </div>
+     </div>
+
      <!-- Footer -->
       <footer class="page-footer font-small special-color-dark pt-4">
       

@@ -119,3 +119,30 @@ function borrar(data){
     return false
 
 }
+
+function modificar(data){
+
+  $.ajax({
+            url: '/verProveedor',
+            data: { idProveedor : data },
+            type: 'POST',
+            success: function(response) {
+
+              datos = JSON.parse(response)['datos']
+
+              $('#idProveedor').val(datos[0]);
+              $('#nombreProveedor').val(datos[1]);
+              $('#calleProveedor').val(datos[2]);
+              $('#telefonoProveedor').val(parseInt(datos[3]));
+
+              $('#modalVerProvvedor').modal('show');
+
+            },
+            error: function(error) {
+
+                console.log(error);
+
+            }
+        });
+
+}
