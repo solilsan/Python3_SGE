@@ -48,7 +48,7 @@ function cargarDatos(){
 
 cargarDatos()
 
-function validar(){
+function validarN(){
 
   let valido = true
 
@@ -63,7 +63,7 @@ function validar(){
 
 $('#crearProveedor').click(function() {
 
-  if (validar()){
+  if (validarN()){
 
       $('#modalCrearProveedor').modal('hide');
 
@@ -147,9 +147,22 @@ function modificar(data){
 
 }
 
+function validarG(){
+
+  let valido = true
+
+  if ($('#nProveedor').val() == ""){
+
+    valido = false
+  }
+
+  return valido
+
+}
+
 $('#actualizarProveedor').click(function() {
 
-    if (validar()){
+    if (validarG()){
 
         $('#modalVerProveedor').modal('hide');
 
