@@ -135,7 +135,7 @@ function modificar(data){
               $('#calleProveedor').val(datos[2]);
               $('#telefonoProveedor').val(parseInt(datos[3]));
 
-              $('#modalVerProvvedor').modal('show');
+              $('#modalVerProveedor').modal('show');
 
             },
             error: function(error) {
