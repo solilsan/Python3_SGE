@@ -48,7 +48,7 @@ function cargarDatos(){
 
 cargarDatos()
 
-function validarC(){
+function validar(){
 
   let valido = true
 
@@ -63,7 +63,7 @@ function validarC(){
 
 $('#crearProveedor').click(function() {
 
-  if (validarC()){
+  if (validar()){
 
       $('#modalCrearProveedor').modal('hide');
 
@@ -149,7 +149,7 @@ function modificar(data){
 
 $('#actualizarProveedor').click(function() {
 
-    if (validarA()){
+    if (validar()){
 
         $('#modalVerProveedor').modal('hide');
 
