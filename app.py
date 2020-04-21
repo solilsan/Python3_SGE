@@ -733,6 +733,27 @@ def crearProveedor():
 
 	return json.dumps(1);
 
+@app.route('/borrarProveedor', methods=['POST'])
+def borrarProveedor():
+
+	idProveedor = request.form['idProveedor']
+
+	with open(os.getcwd()+'/Python3_SGE/datos/listaProveedors.csv', 'r', encoding="ISO-8859-15") as inp, open(os.getcwd()+'/Python3_SGE/datos/new.csv', 'w', encoding="ISO-8859-15") as out:
+
+		writer = csv.DictWriter(out, dialect='unix', delimiter=";", quotechar=";",
+    		fieldnames =("ID", "NOMBRE", "DIRECCION", "TELEFONO", "CONTROLES") , quoting=csv.QUOTE_MINIMAL)
+
+		writer.writeheader() #Evitamos borrar los titulos (fieldnames)
+
+		for rowbp in csv.DictReader(inp, dialect='unix', delimiter=";"):
+			if rowbp["ID"] != idProveedor: #Creamos el nuevo archivo con todos los datos menos la fila con el id devuelto
+				writer.writerow(rowbp)
+
+	os.remove(os.getcwd()+'/Python3_SGE/datos/listaInventario.csv') #Removemos el anterior archivo
+	os.rename(os.getcwd()+'/Python3_SGE/datos/new.csv', os.getcwd()+'/Python3_SGE/datos/listaProveedors.csv') #Cambiamos el nombre del nuevo archivo al nombre del anterior
+
+	return json.dumps(1);
+
 #Inicio de la aplicación.
 if __name__ == "__main__":
     app.run()

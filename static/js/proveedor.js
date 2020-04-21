@@ -95,3 +95,27 @@ $('#crearProveedor').click(function() {
       }
 
     });
+
+function borrar(data){
+
+    $.ajax({
+            url: '/borrarProveedor',
+            data: { idInventario : data },
+            type: 'POST',
+            async:false,
+            success: function(response) {
+
+              table.destroy();
+              cargarDatos()
+
+            },
+            error: function(error) {
+
+                console.log(error);
+
+            }
+        });
+
+    return false
+
+}
