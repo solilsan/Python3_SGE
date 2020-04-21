@@ -776,9 +776,6 @@ def verProveedor():
 @app.route('/actualizarProveedor', methods=['POST'])
 def actualizarProveedor():
 
-	precioCompra = request.form['precioCompraAP']
-	precioVenta = request.form['precioVentaAP']
-
 	with open(os.getcwd()+'/Python3_SGE/datos/listaProveedors.csv', 'r', encoding="ISO-8859-15") as inp, open(os.getcwd()+'/Python3_SGE/datos/new.csv', 'w', encoding="ISO-8859-15") as out:
 
 		writer = csv.DictWriter(out, dialect='unix', delimiter=";", quotechar=";",
