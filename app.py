@@ -765,7 +765,7 @@ def verProveedor():
 
 		for rowvp in csv.DictReader(inp, dialect='unix', delimiter=";"):
 
-			if rowvp["ID"] == idInventario: #Añadimos los datos del elemento seleccionado(id) a la lista
+			if rowvp["ID"] == idProveedor: #Añadimos los datos del elemento seleccionado(id) a la lista
 				datosP.append(rowvp['ID'])
 				datosP.append(rowvp['NOMBRE'])
 				datosP.append(rowvp['DIRECCION'])
