@@ -100,7 +100,7 @@ function borrar(data){
 
     $.ajax({
             url: '/borrarProveedor',
-            data: { idInventario : data },
+            data: { idProveedor : data },
             type: 'POST',
             async:false,
             success: function(response) {
