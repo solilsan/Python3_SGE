@@ -1034,7 +1034,7 @@ def realizarVenta():
 		writer.writeheader() #Evitamos borrar los titulos (fieldnames)
 	
 		for rowbp in csv.DictReader(inp, delimiter=";"):
-			if rowbp["ID"] != ridCompra: #Creamos el nuevo archivo con todos los datos menos la fila con el id devuelto
+			if rowbp["ID"] != ridVenta: #Creamos el nuevo archivo con todos los datos menos la fila con el id devuelto
 				writer.writerow(rowbp)
 	
 	os.remove(os.getcwd()+'/Python3_SGE/datos/listaVentas.csv') #Removemos el anterior archivo
