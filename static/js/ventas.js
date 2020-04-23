@@ -52,7 +52,7 @@ cargarDatos()
 
 var preciosProductos = []
 var idProducto
-var idProveedor
+var idCliente
 
 $('#botonCrearVenta').click(function() {
 
