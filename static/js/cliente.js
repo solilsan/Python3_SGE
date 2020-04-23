@@ -17,7 +17,7 @@ var table
 function cargarDatos(){
 
     $.ajax({
-      url: '/cargarClientees',
+      url: '/cargarClientes',
       type: 'POST',
       success: function(response) { 
 
