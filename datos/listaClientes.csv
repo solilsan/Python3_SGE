@@ -1,0 +1,2 @@
+ID;NOMBRE;DIRECCION;TELEFONO;CONTROLES
+1;CompraMas;Calle Iventada 2;675456987;<button onclick="modificar(1)" class="btn btn btn-outline-warning" type="button">Modificar</button><button onclick="borrar(1)" class="btn btn btn-outline-danger mt-2" type="button">Borrar</button>

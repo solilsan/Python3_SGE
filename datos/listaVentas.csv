@@ -1,0 +1,2 @@
+ID;PRODUCTO;CLIENTE;CANTIDAD;PRECIO;TOTAL;CONTROLES
+1;1;1;10;10$;100$;<button onclick="vender(1)" class="btn btn btn-outline-warning" type="button">Vender</button><button onclick="borrar(1)" class="btn btn btn-outline-danger mt-2" type="button">Borrar</button>

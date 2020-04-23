@@ -1,0 +1,185 @@
+<html>
+<head>
+
+	<link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/addons/datatables.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/addons/datatables-select.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/mdb.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/all.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/addons/datatables.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/addons/datatables-select.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+  <style type="text/css">
+    
+    .pSelect {
+      background-color: #1c2331;
+      color: white;
+      margin-left: 25px;
+    }
+
+  </style>
+
+</head>
+<body class="elegant-color-dark">
+
+	<div class="container">
+
+        <nav class="navbar navbar-expand-lg navbar-dark mt-2">
+
+            <a class="navbar-brand" href="/inicio.html">SGE</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"  aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+                <li class="nav-item">
+
+                  <div class="dropdown">
+                    <button class="btn btn-outline-info dropdown-toggle menuB" type="button" id="dropdownMenuButtonInventario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Inventario</button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonInventario">
+                      <a class="dropdown-item" href="/inventario.html">Crear</a>
+                    </div>
+                  </div>
+
+                </li>
+
+                <li class="nav-item">
+
+                  <div class="dropdown">
+                    <button class="btn btn-outline-info dropdown-toggle menuB" type="button" id="dropdownMenuButtonVentas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ventas</button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonVentas">
+                      <a class="dropdown-item active" href="/ventas.html">Crear</a>
+                      <a class="dropdown-item" href="#">Clientes</a>
+                    </div>
+                  </div>
+
+                </li>
+
+                <li class="nav-item">
+
+                  <div class="dropdown">
+                    <button class="btn btn-outline-info dropdown-toggle menuB" type="button" id="dropdownMenuButtonCompras" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Compras</button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonCompras">
+                      <a class="dropdown-item" href="/compras.html">Crear</a>
+                      <a class="dropdown-item" href="/proveedor.html">Proveedor</a>
+                      <a class="dropdown-item" href="/historicoCompras.html">Histórico</a>
+                    </div>
+                  </div>
+
+                </li>
+
+              </ul>
+
+              <form class="form-inline my-2 my-lg-0" action="/logout" method="post" role="form">
+
+                <button id="logout" class="btn btn btn-outline-primary my-2 my-sm-0" type="button">Salir</button>
+
+              </form>
+
+            </div>
+
+        </nav>
+
+        <div id="divInventario" class="mt-5">
+
+          <div class="text-center">
+
+  				  <button id="botonCrearVenta" class="btn btn btn-outline-primary my-2 my-sm-0" type="button" data-toggle="modal" data-target="#modalCrearVenta">Crear</button>
+
+			    </div>
+
+        	<table id="dt-select" class="table table-striped table-bordered text-center" cellspacing="0" width="100%">
+  				<div id="div_carga" class="text-center">
+            <img id="cargador" src="{{ url_for('static', filename='img/ajax-loader.gif') }}"/>
+          </div>
+			    </table>
+
+		    </div>
+
+  </div>
+
+        <div class="modal fade" id="modalCrearVenta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content unique-color-dark text-white">
+              <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Crear Venta</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <form id="crearVentaForm" class="text-center" method="post" role="form">
+
+              <div class="modal-body mx-3">
+
+                <div class="md-form mb-5 row">
+
+                  <p class="col-2 pt-2">Producto:</p>
+                  
+                  <select id="sProductos" class="browser-default custom-select col-9 pSelect">
+                  </select>
+
+                </div>
+
+                <div class="md-form mb-5 row">
+
+                  <p class="col-2 pt-2">Cliente:</p>
+                  
+                  <select id="sCliente" class="browser-default custom-select col-9 pSelect">
+                  </select>
+
+                </div>
+
+                <div class="md-form mb-5">
+                  <input type="number" id="cantidadCP" name="cantidad" class="form-control validate" placeholder="Cantidad">
+                </div>
+
+                <div class="md-form mb-5">
+                  <input type="number" id="precioCP" step="0.01" name="precio" class="form-control validate disabled" placeholder="Precio">
+                </div>
+
+                <div class="md-form mb-5">
+                  <input type="number" id="totalCP" step="0.01" name="total" class="form-control validate disabled" placeholder="Total">
+                </div>
+
+              </div>
+
+              <div class="modal-footer d-flex justify-content-center">
+                <button id="crearCompra" class="btn btn btn-outline-primary my-2 my-sm-0">Crear</button>
+              </div>
+
+            </form>
+
+            </div>
+          </div>
+        </div>
+
+     </div>
+
+     <!-- Footer -->
+      <footer class="page-footer font-small special-color-dark pt-4">
+      
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2020 Copyright:
+          <a href="#"> Alexsandro.Ruiz</a>
+        </div>
+        <!-- Copyright -->
+      
+      </footer>
+      <!-- Footer -->
+
+</body>
+
+<script src="{{ url_for('static', filename='js/ventas.js') }}"></script>
+
+</html>
