@@ -113,7 +113,7 @@ $('#botonCrearVenta').click(function() {
 
         if (data.length > 1) {
 
-          idProveedor = data[0][0]
+          idCliente = data[0][0]
 
           $("#sCliente").append('<option value='+data[0][0]+' selected>'+data[0][1]+'</option>');
   
@@ -124,7 +124,7 @@ $('#botonCrearVenta').click(function() {
         }
         else {
 
-          idProveedor = data[0][0]
+          idCliente = data[0][0]
 
           $("#sCliente").append('<option value='+data[0][0]+' selected>'+data[0][1]+'</option>');
 
@@ -166,7 +166,7 @@ $("#cantidadCP").on("change paste keyup", function() {
 
 $('#sCliente').on('change', function() {
 
-  idProveedor = this.value
+  idCliente = this.value
 
 });
 
