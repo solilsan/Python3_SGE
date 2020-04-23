@@ -990,7 +990,7 @@ def realizarVenta():
 
 		for rowvp in csv.DictReader(inp, delimiter=";"):
 	
-			if rowvp["ID"] == ridCompra:
+			if rowvp["ID"] == ridVenta:
 				rproducto = rowvp['PRODUCTO']
 				rcliente = rowvp['CLIENTE']
 				rcantidad = rowvp['CANTIDAD']

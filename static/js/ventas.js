@@ -250,7 +250,7 @@ function vender(data){
 
     $.ajax({
             url: '/realizarVenta',
-            data: { idCompra : data },
+            data: { idVenta : data },
             type: 'POST',
             async:false,
             success: function(response) {
