@@ -1042,6 +1042,171 @@ def realizarVenta():
 
 	return json.dumps(1);
 
+@app.route('/cliente.html')
+def cliente():
+	if 'loginC' in session:
+
+		if session['loginC']:
+
+			valido = False
+
+			with open(os.getcwd()+'/Python3_SGE/datos/listaDepartamentos.csv', 'r', encoding="ISO-8859-15") as File:
+
+				reader = csv.reader(File, delimiter=';', quotechar=';',
+                        quoting=csv.QUOTE_MINIMAL)
+
+				for row in reader: #Comprobamos si el usuario logueado tiene permisos para usar este modulo
+					if row[0] == "3":
+						for i in row[2]:
+							if i == session['idUser']:
+								valido = True
+
+			if valido:
+				return render_template('cliente.html')
+
+			else:
+				return render_template('inicio.html')
+
+		else:
+			return render_template('index.html')
+
+	else:
+		return render_template('index.html')
+
+@app.route('/cargarClientes', methods=['POST'])
+def cargarClientes():
+
+	listaDatos = []
+
+	with open(os.getcwd()+'/Python3_SGE/datos/listaClientes.csv', 'r', encoding="ISO-8859-15") as lc:
+
+		readerlc = csv.reader(lc, delimiter=';', quotechar=';',
+	                       quoting=csv.QUOTE_MINIMAL)
+
+		next(readerlc)
+
+		index = 0 #Cantidad de elementos que tiene el archivo listaCompra.csv
+		borrarP = 2 #Posicion en la que borrar el id del proveedor
+		borrarI = 1 #Posicion en la que borrar el id del invenario
+
+		for rowlc in readerlc:
+
+			datos = []
+
+			for i in rowlc:
+
+				datos.append(i)
+
+			listaDatos.append(datos)
+
+	return json.dumps({'datos':listaDatos})
+
+@app.route('/newCliente', methods=['POST'])
+def newCliente():
+
+	result = []
+
+	with open(os.getcwd()+'/Python3_SGE/datos/listaClientes.csv', 'r', encoding="ISO-8859-15") as inp, open(os.getcwd()+'/Python3_SGE/datos/new.csv', 'w', encoding="ISO-8859-15") as out:
+
+			writer = csv.DictWriter(out, dialect='unix', delimiter=";", quotechar=";",
+	    		fieldnames =("ID", "NOMBRE", "DIRECCION", "TELEFONO", "CONTROLES"), quoting=csv.QUOTE_MINIMAL)
+
+			writer.writeheader()
+
+			readercp = csv.DictReader(inp, dialect='unix', delimiter=";") #Leer archivo viejo
+
+			for rowcp in readercp:
+				result.append(rowcp) #Guardamos los datos del archivo viejo en una lista
+
+			ID = 0
+			try:
+				ID = int((int(rowcp['ID'][-1]) + 1)) #Recogemos el id del ultimo elemento del archivo y le sumamos 1
+			except NameError:
+				ID = 1 #Si no hay ningun elemento en el archivo ponemos el id a 1
+
+			nombre = request.form['nombreCliente']
+			direccion = request.form['calleCliente']
+			telefono = request.form['telefonoCliente']
+
+			controles = '<button onclick="modificar({})" class="btn btn btn-outline-warning" type="button">Modificar</button><button onclick="borrar({})" class="btn btn btn-outline-danger mt-2" type="button">Borrar</button>'.format(ID, ID)
+
+			data = {'ID': ID, 'NOMBRE': nombre, "DIRECCION": direccion, "TELEFONO": telefono, "CONTROLES": controles}
+
+			result.append(data) #Añadimos el nuevo elemento a la lista
+			writer.writerows(result) #Añadimos los datos de la lista en el nuevo archivo
+
+	os.remove(os.getcwd()+'/Python3_SGE/datos/listaClientes.csv')
+	os.rename(os.getcwd()+'/Python3_SGE/datos/new.csv', os.getcwd()+'/Python3_SGE/datos/listaClientes.csv')
+
+	return json.dumps(1);
+
+@app.route('/borrarCliente', methods=['POST'])
+def borrarCliente():
+
+	idCliente = request.form['idCliente']
+
+	with open(os.getcwd()+'/Python3_SGE/datos/listaClientes.csv', 'r', encoding="ISO-8859-15") as inp, open(os.getcwd()+'/Python3_SGE/datos/new.csv', 'w', encoding="ISO-8859-15") as out:
+
+		writer = csv.DictWriter(out, dialect='unix', delimiter=";", quotechar=";",
+    		fieldnames =("ID", "NOMBRE", "DIRECCION", "TELEFONO", "CONTROLES") , quoting=csv.QUOTE_MINIMAL)
+
+		writer.writeheader() #Evitamos borrar los titulos (fieldnames)
+
+		for rowbp in csv.DictReader(inp, dialect='unix', delimiter=";"):
+			if rowbp["ID"] != idCliente: #Creamos el nuevo archivo con todos los datos menos la fila con el id devuelto
+				writer.writerow(rowbp)
+
+	os.remove(os.getcwd()+'/Python3_SGE/datos/listaClientes.csv') #Removemos el anterior archivo
+	os.rename(os.getcwd()+'/Python3_SGE/datos/new.csv', os.getcwd()+'/Python3_SGE/datos/listaClientes.csv') #Cambiamos el nombre del nuevo archivo al nombre del anterior
+
+	return json.dumps(1);
+
+@app.route('/verCliente', methods=['POST'])
+def verCliente():
+
+	idCliente = request.form['idCliente']
+
+	datosP = []
+
+	with open(os.getcwd()+'/Python3_SGE/datos/listaClientes.csv', 'r', encoding="ISO-8859-15") as inp:
+
+		for rowvp in csv.DictReader(inp, dialect='unix', delimiter=";"):
+
+			if rowvp["ID"] == idCliente: #Añadimos los datos del elemento seleccionado(id) a la lista
+				datosP.append(rowvp['ID'])
+				datosP.append(rowvp['NOMBRE'])
+				datosP.append(rowvp['DIRECCION'])
+				datosP.append(rowvp['TELEFONO'])
+
+	return json.dumps({'datos':datosP}) #Devolvemos los datos en forma json
+
+@app.route('/actualizarCliente', methods=['POST'])
+def actualizarCliente():
+
+	with open(os.getcwd()+'/Python3_SGE/datos/listaClientes.csv', 'r', encoding="ISO-8859-15") as inp, open(os.getcwd()+'/Python3_SGE/datos/new.csv', 'w', encoding="ISO-8859-15") as out:
+
+		writer = csv.DictWriter(out, dialect='unix', delimiter=";", quotechar=";",
+    		fieldnames =("ID", "NOMBRE", "DIRECCION", "TELEFONO", "CONTROLES") , quoting=csv.QUOTE_MINIMAL)
+
+		writer.writeheader()
+
+		for rowacp in csv.DictReader(inp, dialect='unix', delimiter=";"):
+
+			if rowacp["ID"] == request.form['idCliente']: #Cambiamos los datos del elemto seleccionado(id) a los nuevos datos
+				rowacp['NOMBRE'] = request.form['nCliente']
+				rowacp['DIRECCION'] = request.form['cCliente']
+				rowacp['TELEFONO'] = request.form['tCliente']
+
+			rowacp = {'ID': rowacp['ID'], 'NOMBRE': rowacp['NOMBRE'], 'DIRECCION': rowacp['DIRECCION'], 'TELEFONO': rowacp['TELEFONO'], 'CONTROLES': rowacp['CONTROLES']}
+			#Añadimos esos datos al rowacp
+			writer.writerow(rowacp) #Añadimos los datos el archivo
+
+	os.remove(os.getcwd()+'/Python3_SGE/datos/listaClientes.csv')
+	os.rename(os.getcwd()+'/Python3_SGE/datos/new.csv', os.getcwd()+'/Python3_SGE/datos/listaClientes.csv')
+
+	return json.dumps(1);
+
+
 #Inicio de la aplicación.
 if __name__ == "__main__":
     app.run()
